@@ -24,7 +24,7 @@ describe("/config.json", function() {
   it("response contains apiBaseurl key", function() {
     expect(resp).to.include.keys('apiBaseurl');
   });
-  // it("version value matches regex: " + shaRegex.toString(), function() {
-  //   expect(resp.version).to.match(shaRegex);
-  // });
+  it("version value matches regex: " + shaRegex.toString(), function() {
+    expect(resp.version).to.match(shaRegex);
+  });
 });
