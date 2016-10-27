@@ -2,10 +2,7 @@
 # Cookbook Name:: votesup
 # Recipe:: node_modules
 #
-# Copyright (C) 2015 SungardAS
-#
-# All rights reserved - Do Not Redistribute
-#
+
 
 remote_directory '/votesup' do
   source 'app'

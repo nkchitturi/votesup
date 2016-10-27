@@ -2,10 +2,6 @@
 # Cookbook Name:: votesup
 # Recipe:: prereqs
 #
-# Copyright (C) 2015 SungardAS
-#
-# All rights reserved - Do Not Redistribute
-#
 
 if ['rhel', 'amazon'].include?(node['platform'])
   execute 'yum upgrade -y'

@@ -2,10 +2,6 @@
 # Cookbook Name:: votesup
 # Recipe:: nginx_config
 #
-# Copyright (C) 2015 SungardAS
-#
-# All rights reserved - Do Not Redistribute
-#
 
 cookbook_file '/etc/nginx/sites-available/votesup' do
   source 'nginx/ssl-votesup-site.cfg'

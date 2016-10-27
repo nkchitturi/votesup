@@ -2,14 +2,7 @@
 # Cookbook Name:: votesup
 # Recipe:: nodejs
 #
-# Copyright (C) 2015 SungardAS
-#
-# All rights reserved - Do Not Redistribute
 
-## NOTE: Moved nodejs install to this cookbook
-## It'd be nice to use an open source cookbook, but the one Jonny found
-## installed a very old version of node. Thie version matches what is installed
-## on our Macbooks via Homebrew.
 remote_file '/tmp/node-install.tar.gz' do
   source "https://nodejs.org/dist/v0.12.7/node-v0.12.7-linux-x64.tar.gz"
   owner 'root'
