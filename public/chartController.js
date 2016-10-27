@@ -103,7 +103,7 @@ voteSUpChartController = function () {
   }
 
   function pollForNewConfig() {
-    $.getJSON('config.json', {}, function(data, status) {
+    $.getJSON('rootPoll.json', {}, function(data, status) {
       if (status !== 'success' || ! data.hasOwnProperty('version')) {
         return;
       }
@@ -116,7 +116,7 @@ voteSUpChartController = function () {
 
   $.ajaxSetup({ timeout: 750 });
 
-  $.getJSON('config.json', {}, function(data, status) {
+  $.getJSON('rootPoll.json', {}, function(data, status) {
     if (status !== 'success' || ! data.hasOwnProperty('version')) {
       return;
     }

@@ -11,7 +11,7 @@ describe("/increment", function() {
     before(function(done) {
     var apiBaseurl;
 
-    rp({ uri: targetUrl+'/config.json', json:true})
+    rp({ uri: targetUrl+'/rootPoll.json', json:true})
         .then(function (data) {
           if(!data.apiBaseurl || data.apiBaseurl == '/') {
             apiBaseurl = targetUrl;

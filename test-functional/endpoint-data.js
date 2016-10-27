@@ -10,7 +10,7 @@ describe("/data", function() {
 
   var apiBaseurl;
   before(function(done) {
-      rp({ uri: targetUrl+'/config.json', json:true})
+      rp({ uri: targetUrl+'/rootPoll.json', json:true})
           .then(function (data) {
               if(!data.apiBaseurl || data.apiBaseurl == '/') {
                   apiBaseurl = targetUrl;
@@ -65,7 +65,7 @@ describe("/data?countsOnly", function() {
 
   var apiBaseurl;
   before(function(done) {
-      rp({ uri: targetUrl+'/config.json', json:true})
+      rp({ uri: targetUrl+'/rootPoll.json', json:true})
           .then(function (data) {
               if(!data.apiBaseurl || data.apiBaseurl == '/') {
                   apiBaseurl = targetUrl;
