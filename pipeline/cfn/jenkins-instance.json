@@ -1,6 +1,6 @@
 {
   "AWSTemplateFormatVersion":"2010-09-09",
-  "Description":"Stelligent CloudFormation Template for launching Jenkins on an EC2 instance ** This template creates one or more Amazon resources. You will be billed for the AWS resources used if you create a stack from this template.",
+  "Description":"SungardAS CloudFormation Template for launching Jenkins on an EC2 instance ** This template creates one or more Amazon resources. You will be billed for the AWS resources used if you create a stack from this template.",
   "Parameters":{
     "Ec2Key":{
       "Type":"String",

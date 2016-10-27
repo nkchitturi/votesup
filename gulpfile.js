@@ -23,7 +23,7 @@ var ddbLocalPort = 8079;
 
 // Delete the dist directory
 gulp.task('clean', function (cb) {
-  del(['cookbooks/dromedary/files/app/*', 'dist'], cb);
+  del(['cooksbooks/votesup/files/app/*', 'dist'], cb);
 });
 
 // Execute unit tests
@@ -52,22 +52,22 @@ gulp.task('lint', function(callback) {
   );
 });
 
-// Copy dromedary app to cookbooks/dromedary/files/default/app
+// Copy dromedary app to cooksbooks/votesup/files/default/app
 gulp.task('cookbookfiles:app', function () {
   return gulp.src(['app.js', 'appspec.yml'] )
-             .pipe(gulp.dest('cookbooks/dromedary/files/default/app'));
+             .pipe(gulp.dest('cooksbooks/votesup/files/default/app'));
 });
 gulp.task('cookbookfiles:lib', function () {
   return gulp.src(['lib/*.js'] )
-             .pipe(gulp.dest('cookbooks/dromedary/files/default/app/lib'));
+             .pipe(gulp.dest('cooksbooks/votesup/files/default/app/lib'));
 });
 gulp.task('cookbookfiles:public', function () {
   return gulp.src(['public/*'] )
-             .pipe(gulp.dest('cookbooks/dromedary/files/default/app/public'));
+             .pipe(gulp.dest('cooksbooks/votesup/files/default/app/public'));
 });
 gulp.task('cookbookfiles:package', function () {
   return gulp.src(['package.json'])
-             .pipe(gulp.dest('cookbooks/dromedary/files/default/app'))
+             .pipe(gulp.dest('cooksbooks/votesup/files/default/app'))
              .pipe(install({production: true}));
 });
 
@@ -84,7 +84,7 @@ gulp.task('copy-to-cookbooks', function(callback) {
 
 // Copy cookbooks to dist/
 gulp.task('dist:berks-vendor', function (cb) {
-  exec('cd cookbooks/dromedary/ && berks vendor ../../dist', function (err, stdout, stderr) {
+  exec('cd cooksbooks/votesup/ && berks vendor ../../dist', function (err, stdout, stderr) {
     gutil.log(stdout);
     gutil.log(stderr);
     cb(err);

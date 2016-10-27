@@ -2,7 +2,7 @@
 # Cookbook Name:: dromedary
 # Recipe:: nginx_config
 #
-# Copyright (C) 2015 Stelligent
+# Copyright (C) 2015 SungardAS
 #
 # All rights reserved - Do Not Redistribute
 #

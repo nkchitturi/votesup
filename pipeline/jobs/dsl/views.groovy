@@ -19,7 +19,7 @@ listView('ops') {
 listView('Dromedary') {
     description('Dromedary CodePipeline Jobs')
     jobs {
-        regex('drom-.+')
+        regex('vote-.+')
     }
     columns {
         status()

@@ -4,4 +4,4 @@ set -ex
 
 . environment.sh
 
-bash "$(dirname $0)/../../../bin/eni-attach-to-app.sh" $dromedary_app_stack_name
+bash "$(dirname $0)/../../../bin/eni-attach-to-app.sh" $votesup_app_stack_name

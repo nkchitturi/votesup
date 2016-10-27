@@ -18,23 +18,23 @@ fi
 
 set -x
 
-eni_id="$(aws cloudformation describe-stacks --stack-name $dromedary_eni_stack_name --output text --query 'Stacks[0].Outputs[?OutputKey==`EniId`].OutputValue')"
+eni_id="$(aws cloudformation describe-stacks --stack-name $votesup_eni_stack_name --output text --query 'Stacks[0].Outputs[?OutputKey==`EniId`].OutputValue')"
 attachment_id="$(aws ec2 describe-network-interfaces --network-interface-ids $eni_id --output text --query 'NetworkInterfaces[0].Attachment.AttachmentId')"
 instance_id="$(aws cloudformation describe-stacks --stack-name $app_stack --output text --query 'Stacks[0].Outputs[?OutputKey==`InstanceId`].OutputValue')"
 sec_grp_id="$(aws cloudformation describe-stacks --stack-name $app_stack --output text --query 'Stacks[0].Outputs[?OutputKey==`InstanceSecurityGroup`].OutputValue')"
 
 # update ENI stack with new security-group
 aws cloudformation update-stack \
-    --stack-name $dromedary_eni_stack_name \
+    --stack-name $votesup_eni_stack_name \
     --template-body file://$script_dir/../pipeline/cfn/app-eni.json \
     --parameters ParameterKey=Hostname,UsePreviousValue=true \
         ParameterKey=Domain,UsePreviousValue=true \
         ParameterKey=SubnetId,UsePreviousValue=true \
         ParameterKey=SecurityGroupId,ParameterValue=$sec_grp_id
 
-eni_stack_status="$(bash $script_dir/cfn-wait-for-stack.sh $dromedary_eni_stack_name)"
+eni_stack_status="$(bash $script_dir/cfn-wait-for-stack.sh $votesup_eni_stack_name)"
 if [ $? -ne 0 ]; then
-    echo "Fatal: Jenkins stack $dromedary_eni_stack_name ($eni_stack_status) failed to create properly" >&2
+    echo "Fatal: Jenkins stack $votesup_eni_stack_name ($eni_stack_status) failed to create properly" >&2
     exit 1
 fi
 

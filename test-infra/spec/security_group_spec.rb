@@ -1,9 +1,9 @@
 require 'aws-sdk'
 
-describe('dromedary_security_group') do
+describe('votesup_security_group') do
   it 'will not allow all traffic on 22' do
     ec2 = Aws::EC2::Client.new(region: 'us-east-1')
-    sg = ENV["dromedary_security_group"]
+    sg = ENV["votesup_security_group"]
 
     expect(sg).to be
 

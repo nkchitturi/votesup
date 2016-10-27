@@ -1,6 +1,6 @@
 {
   "AWSTemplateFormatVersion":"2010-09-09",
-  "Description":"Stelligent CloudFormation Sample Template ** This template creates one or more Amazon resources. You will be billed for the AWS resources used if you create a stack from this template.",
+  "Description":"SungardAS CloudFormation Sample Template ** This template creates one or more Amazon resources. You will be billed for the AWS resources used if you create a stack from this template.",
   "Parameters":{
     "Hostname":{
       "Type":"String",

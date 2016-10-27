@@ -128,7 +128,7 @@
                                 "cwd": "/userdata",
                                 "env": {
                                     "HOME": "/root",
-                                    "DROMEDARY_DDB_TABLE_NAME": { "Ref": "DynamoDbTable" }
+                                    "VOTESUP_DDB_TABLE_NAME": { "Ref": "DynamoDbTable" }
                                 },
                                 "command": { "Fn::Join" : [ "", [
                                     "cat > /userdata/solo.rb <<SOLORB\n",
@@ -163,7 +163,7 @@
                                 "cwd": "/userdata",
                                 "env": {
                                     "HOME": "/root",
-                                    "DROMEDARY_DDB_TABLE_NAME": { "Ref": "DynamoDbTable" }
+                                    "VOTESUP_DDB_TABLE_NAME": { "Ref": "DynamoDbTable" }
                                 },
                                 "command": { "Fn::Join" : [ "", [
                                     "cat > /userdata/solo.rb <<SOLORB\n",

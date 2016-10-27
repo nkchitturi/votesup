@@ -2,7 +2,7 @@
 # Cookbook Name:: dromedary
 # Recipe:: nodejs
 #
-# Copyright (C) 2015 Stelligent
+# Copyright (C) 2015 SungardAS
 #
 # All rights reserved - Do Not Redistribute
 

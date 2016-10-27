@@ -117,7 +117,7 @@
                   }
                 ],
                 "Configuration":{
-                  "ProjectName":"drom-build"
+                  "ProjectName":"vote-build"
                 },
                 "RunOrder":1
               },
@@ -142,7 +142,7 @@
 
                 ],
                 "Configuration":{
-                  "ProjectName":"drom-unit-test"
+                  "ProjectName":"vote-unit-test"
                 },
                 "RunOrder":1
               },
@@ -167,7 +167,7 @@
 
                 ],
                 "Configuration":{
-                  "ProjectName":"drom-staticcode-anal"
+                  "ProjectName":"vote-staticcode-anal"
                 },
                 "RunOrder":1
               }
@@ -197,7 +197,7 @@
                   }
                 ],
                 "Configuration":{
-                  "ProjectName":"drom-create-env"
+                  "ProjectName":"vote-create-env"
                 },
                 "RunOrder":1
               },
@@ -222,7 +222,7 @@
                   }
                 ],
                 "Configuration":{
-                  "ProjectName":"drom-acceptance-test"
+                  "ProjectName":"vote-acceptance-test"
                 },
                 "RunOrder":2
               },
@@ -247,7 +247,7 @@
                   }
                 ],
                 "Configuration":{
-                  "ProjectName":"drom-infra-test"
+                  "ProjectName":"vote-infra-test"
                 },
                 "RunOrder":2
               }
@@ -275,7 +275,7 @@
 
                 ],
                 "Configuration":{
-                  "ProjectName":"drom-promote-env"
+                  "ProjectName":"vote-promote-env"
                 },
                 "RunOrder":1
               }

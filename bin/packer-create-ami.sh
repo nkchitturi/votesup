@@ -10,10 +10,10 @@ fi
 
 . $ENVIRONMENT_FILE
 
-vpc_id="$(aws cloudformation describe-stacks --stack-name $dromedary_vpc_stack_name --output text --query 'Stacks[0].Outputs[?OutputKey==`VPC`].OutputValue')"
-subnet_id="$(aws cloudformation describe-stacks --stack-name $dromedary_vpc_stack_name --output text --query 'Stacks[0].Outputs[?OutputKey==`SubnetId`].OutputValue')"
+vpc_id="$(aws cloudformation describe-stacks --stack-name $votesup_vpc_stack_name --output text --query 'Stacks[0].Outputs[?OutputKey==`VPC`].OutputValue')"
+subnet_id="$(aws cloudformation describe-stacks --stack-name $votesup_vpc_stack_name --output text --query 'Stacks[0].Outputs[?OutputKey==`SubnetId`].OutputValue')"
 # borrowing security group from Jenkins
-sg_id="$(aws cloudformation describe-stacks --stack-name $dromedary_jenkins_stack_name --output text --query 'Stacks[0].Outputs[?OutputKey==`SecurityGroup`].OutputValue')"
+sg_id="$(aws cloudformation describe-stacks --stack-name $votesup_jenkins_stack_name --output text --query 'Stacks[0].Outputs[?OutputKey==`SecurityGroup`].OutputValue')"
 
 set -x
 
@@ -24,6 +24,6 @@ packer build \
     -var "vpc_id=$vpc_id" \
     -var "subnet_id=$subnet_id" \
     -var "sg_id=$sg_id" \
-    -var "ami_name=dromedary_ami_created_`date +%Y%m%d%H%M%S`" \
+    -var "ami_name=votesup_ami_created_`date +%Y%m%d%H%M%S`" \
     -var "dist_dir=dist/" \
-    cookbooks/dromedary/packer.json
+    cooksbooks/votesup/packer.json
