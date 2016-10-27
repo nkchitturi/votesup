@@ -60,7 +60,7 @@ votesup_eni_stack_name="$(aws cloudformation describe-stacks --stack-name $pipel
 jenkins_custom_action_provider_name="Jenkins$(echo $uuid)"
 
 temp_dir=$(mktemp -d /tmp/votesup.XXXX)
-config_dir="$(dirname $0)/../pipeline/jobs/xml"
+config_dir="$(dirname $0)/../cicd/jobs/xml"
 config_tar_path="$MasterStackName/jenkins-job-configs-$uuid.tgz"
 
 echo "The value of VPCStackName is $VPCStackName"

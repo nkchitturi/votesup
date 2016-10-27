@@ -30,7 +30,7 @@ votesup_app_stack_name="$votesup_hostname-$(basename $votesup_artifact .tar.gz)"
 aws cloudformation create-stack \
     --disable-rollback \
     --stack-name $votesup_app_stack_name \
-    --template-body file://./pipeline/cfn/votesup-app-inst.json \
+    --template-body file://./cicd/cfn/votesup-app-inst.json \
     --parameters ParameterKey=Ec2Key,ParameterValue=$votesup_ec2_key \
         ParameterKey=SubnetId,ParameterValue=$app_subnet_id \
         ParameterKey=VPC,ParameterValue=$vpc \

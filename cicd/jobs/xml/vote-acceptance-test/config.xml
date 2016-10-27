@@ -30,7 +30,7 @@
   <concurrentBuild>true</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>bash ./pipeline/jobs/scripts/vote-acceptance-test.sh</command>
+      <command>bash ./cicd/jobs/scripts/vote-acceptance-test.sh</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>

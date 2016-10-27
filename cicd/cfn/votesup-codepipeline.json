@@ -270,7 +270,7 @@
             "Value": {
                 "Fn::Join": [
                     "", [
-                        "https://console.aws.amazon.com/codepipeline/home?region=",
+                        "https://console.aws.amazon.com/codecicd/home?region=",
                         {
                             "Ref": "AWS::Region"
                         },
