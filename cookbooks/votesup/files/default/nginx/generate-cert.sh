@@ -27,7 +27,7 @@ O=SungardAS
 localityName=Reston
 commonName=$DOMAIN
 organizationalUnitName=Funny Hats
-emailAddress=paul@stelligent.com
+emailAddress=abc@comp.com
 "
 
 # Generate the server private key

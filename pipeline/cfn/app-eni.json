@@ -1,6 +1,6 @@
 {
   "AWSTemplateFormatVersion":"2010-09-09",
-  "Description":"SungardAS CloudFormation Sample Template ** This template creates one or more Amazon resources. You will be billed for the AWS resources used if you create a stack from this template.",
+  "Description":"VoteSUp demo - ENI provisioning ** This template creates one or more Amazon resources. You will be billed for the AWS resources used if you create a stack from this template.",
   "Parameters":{
     "Hostname":{
       "Type":"String",
@@ -15,7 +15,7 @@
     "SubnetId":{
       "Type":"String",
       "Default":"",
-      "Description":"TODO: Modify this later. VPC subnet id in which to place ENI"
+      "Description":"VPC subnet id in which to place ENI"
     },
     "SecurityGroupId":{
       "Type":"String",

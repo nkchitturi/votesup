@@ -10,7 +10,7 @@ The Arch Diagram is below and the accompanying talk @CloudExpo (TBD)
 
 TBD - Arch Diagram
 
-[![Launch CFN stack](https://s3.amazonaws.com/votesup-demosungardas/public/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#cstack=sn%7En6%7Cturl%7Ehttps://s3.amazonaws.com/votesup-demosungardas/cloudformation/VoteSUp-root.json)
+[![Launch CFN stack](https://s3.amazonaws.com/votesup-demosungardas/public/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#cstack=sn%7En6%7Cturl%7Ehttps://s3.amazonaws.com/votesup-demosungardas/cloudformation/votesup.json)
 
 # About the App
 

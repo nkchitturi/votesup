@@ -1,6 +1,6 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
-    "Description": "VoteSUp demo - application instance",
+    "Description": "VoteSUp demo instance",
 
     "Parameters" : {
         "Ec2Key": {

@@ -1,6 +1,6 @@
 {
   "AWSTemplateFormatVersion":"2010-09-09",
-    "Description": "VoteSUp demo - network infrastructure",
+    "Description": "VoteSUp Demo - network infrastructure",
   "Resources":{
     "VPC":{
       "Type":"AWS::EC2::VPC",

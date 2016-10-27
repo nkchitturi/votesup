@@ -15,7 +15,7 @@
     "GitHubUser":{
       "Type":"String",
       "Description":"GitHub UserName",
-      "Default":"stelligent"
+      "Default":"nkchitturi"
     },
     "Repo":{
       "Type":"String",

@@ -1,6 +1,6 @@
 {
   "AWSTemplateFormatVersion":"2010-09-09",
-  "Description":"Master votesup stack that calls nested stacks",
+  "Description":"VoteSUp master stack calling nested stacks",
   "Parameters":{
     "KeyName":{
       "Description":"Name of an existing EC2 KeyPair to enable SSH access to the instances",
@@ -35,12 +35,12 @@
     "CodePipelineCFNTemplateFile":{
       "Type":"String",
       "Description":"Just the name of the CloudFormation template. Used with BaseTemplateURL.",
-      "Default":"codepipeline-cfn.json"
+      "Default":"codepipeline.json"
     },
     "CodePipelineActionsCFNTemplateFile":{
       "Type":"String",
       "Description":"Just the name of the CloudFormation template. Used with BaseTemplateURL.",
-      "Default":"codepipeline-custom-actions.json"
+      "Default":"cp-custom-actions.json"
     },
     "ENICFNTemplateFile":{
       "Type":"String",
@@ -50,12 +50,12 @@
     "JenkinsCFNTemplateFile":{
       "Type":"String",
       "Description":"Just the name of the CloudFormation template. Used with BaseTemplateURL.",
-      "Default":"jenkins-instance.json"
+      "Default":"jenkins.json"
     },
     "PipelineStoreCFNTemplateFile":{
       "Type":"String",
       "Description":"Just the name of the CloudFormation template. Used with BaseTemplateURL.",
-      "Default":"pipeline-store.json"
+      "Default":"stack-outputs.json"
     },
     "IAMCFNTemplateFile":{
       "Type":"String",
