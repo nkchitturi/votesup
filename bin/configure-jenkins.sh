@@ -90,7 +90,7 @@ for f in */config.xml; do
     sed s/VoteSUpJenkins/$jenkins_custom_action_provider_name/ $f > $f.new && mv $f.new $f
 done
 sed s/S3BUCKET_PLACEHOLDER/$votesup_s3_bucket/ vote-build/config.xml > vote-build/config.xml.new && mv vote-build/config.xml.new vote-build/config.xml
-sed s/BRANCH_PLACEHOLDER/$votesup_branch/ kickoff/config.xml > kickoff/config.xml.new && mv kickoff/config.xml.new kickoff/config.xml
+sed s/BRANCH_PLACEHOLDER/$votesup_branch/ votesup-kickoff/config.xml > votesup-kickoff/config.xml.new && mv votesup-kickoff/config.xml.new votesup-kickoff/config.xml
 sed s/VPC_PLACEHOLDER/$votesup_vpc_stack_name/ vote-build/config.xml > vote-build/config.xml.new && mv vote-build/config.xml.new vote-build/config.xml
 sed s/IAM_PLACEHOLDER/$votesup_iam_stack_name/ vote-build/config.xml > vote-build/config.xml.new && mv vote-build/config.xml.new vote-build/config.xml
 sed s/DDB_PLACEHOLDER/$votesup_ddb_stack_name/ vote-build/config.xml > vote-build/config.xml.new && mv vote-build/config.xml.new vote-build/config.xml

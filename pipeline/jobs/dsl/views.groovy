@@ -1,7 +1,7 @@
 listView('ops') {
     description('ops')
     jobs {
-        name('kickoff')
+        name('votesup-kickoff')
         name('DA-commit-poll-scm')
         name('DA-selfservice-init')
     }
