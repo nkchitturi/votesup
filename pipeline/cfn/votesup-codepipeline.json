@@ -92,7 +92,7 @@
             ]
           },
           {
-            "Name":"Commit",
+            "Name":"Continuous-Itegration-Testing",
             "Actions":[
               {
                 "InputArtifacts":[
@@ -129,7 +129,7 @@
                     }
                   }
                 ],
-                "Name":"UnitTest",
+                "Name":"Test-Unit",
                 "ActionTypeId":{
                   "Category":"Test",
                   "Owner":"Custom",
@@ -154,7 +154,7 @@
                     }
                   }
                 ],
-                "Name":"StaticCodeAnalysis",
+                "Name":"Code-Analysis",
                 "ActionTypeId":{
                   "Category":"Test",
                   "Owner":"Custom",
@@ -174,7 +174,7 @@
             ]
           },
           {
-            "Name":"Acceptance",
+            "Name":"Provision-Testing-Env",
             "Actions":[
               {
                 "InputArtifacts":[
@@ -182,7 +182,7 @@
                     "Name":"VoteSUpBuild"
                   }
                 ],
-                "Name":"CreateEnvironment",
+                "Name":"Provision-New-Environment",
                 "ActionTypeId":{
                   "Category":"Test",
                   "Owner":"Custom",
@@ -207,7 +207,7 @@
                     "Name":"VoteSUpCreate"
                   }
                 ],
-                "Name":"AcceptanceTest",
+                "Name":"Test-Acceptance",
                 "ActionTypeId":{
                   "Category":"Test",
                   "Owner":"Custom",
@@ -254,7 +254,7 @@
             ]
           },
           {
-            "Name":"Production",
+            "Name":"Continuous-Deployment-Production",
             "Actions":[
               {
                 "InputArtifacts":[
@@ -262,7 +262,7 @@
                     "Name":"VoteSUpAccepted"
                   }
                 ],
-                "Name":"PromoteEnvironment",
+                "Name":"Promote-Test-to-Prod-Env",
                 "ActionTypeId":{
                   "Category":"Test",
                   "Owner":"Custom",

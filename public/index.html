@@ -1,128 +1,139 @@
 <!DOCTYPE html>
 <html>
-    <head>
 
-        <meta charset="UTF-8">
-        <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
-        <title>VoteSUp App - SungardAS DevOps Agility Demo</title>
- 
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
-        <link rel="stylesheet" type="text/css" href="style.css">
+<head>
 
-        <script>
-            var voteSUpChartController;
-        </script>
-        
-    </head>
-    <body>
+    <meta charset="UTF-8">
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <title>VoteSUp App - SungardAS DevOps Agility Demo</title>
 
-<!-- Carousel -->
-<!-- Surround everything with a div with the class carousel slide -->
-<div id="theCarousel" class="carousel slide" data-ride="carousel">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
 
-  <!-- Define how many slides to put in the carousel -->
-  <ol class="carousel-indicators">
-    <li data-target="#theCarousel" data-slide-to="0" class="active"> </li >
-    <li data-target="#theCarousel" data-slide-to="1"> </li>
-    <li data-target ="#theCarousel" data-slide-to="2"> </li>
-  </ol >
+    <script>
+        var voteSUpChartController;
+    </script>
 
-  <!-- Define the text to place over the image -->
-  <div class="carousel-inner">
-    <div class="item active" >
-    <div class ="slide1"></div>
+</head>
 
-    <div class="carousel-caption">
-      <img class="full-screen" src="votesup-logo.png" id="logo" alt="VoteSUp Demo App Logo">
-    
-    <span id="websiteTitle">VoteSUp</span>
-        <img src="SungardASLabsLogo.png" id="slogo" align="right" alt="Sungard Availability Services Labs Logo">
-      <h1> Bite the doughnut, change your Standup time!</<h1> <br><br>
+<body>
 
-        <canvas id="voteSUpChart" width="350" height="350" style="padding: 0; margin: auto; display: block;">
-        </canvas>
+    <!-- Carousel -->
+    <!-- Surround everything with a div with the class carousel slide -->
+    <div id="theCarousel" class="carousel slide" data-ride="carousel">
 
-       <h2>DevOps - CICD demo</h2>
-    </div>
-  </div>
-    <div class="item">
-  <div class="slide2"></div>
-    <div class="carousel-caption">
-            <div>
-                <h2>Recent History</h2>
-                <div id="colorCounts">
-                    <div class="col-md-4 border-right"><p class="totnum">-1</p>
-                        <h2>N/A</h2>
-                    </div>
-                    <div class="col-md-4 border-right"><p class="totnum">-1</p>
-                        <h2>N/A</h2>
-                    </div>
-                    <div class="col-md-4 border-right"><p class="totnum">-1</p>
-                        <h2>N/A</h2>
-                    </div>
-                </div>
-                <div class="text-center padtop" id="lastApiResponses">
-                    <ul>
-                        <li>&nbsp;</li>
-                    </ul>
+        <!-- Define how many slides to put in the carousel -->
+        <ol class="carousel-indicators">
+            <li data-target="#theCarousel" data-slide-to="0" class="active"> </li>
+            <li data-target="#theCarousel" data-slide-to="1"> </li>
+            <li data-target="#theCarousel" data-slide-to="2"> </li>
+        </ol>
+
+        <!-- Define the text to place over the image -->
+        <div class="carousel-inner">
+            <div class="item active">
+                <div class="slide1"></div>
+
+                <div class="carousel-caption">
+                    <img class="full-screen" src="votesup-logo.png" id="logo" alt="VoteSUp Demo App Logo">
+
+                    <span id="websiteTitle">VoteSUp</span>
+                    <img src="SungardASLabsLogo.png" id="slogo" align="right" alt="Sungard Availability Services Labs Logo">
+                    <h1> Bite the doughnut, change your Standup time!</<h1> <br><br>
+
+                        <canvas id="voteSUpChart" width="350" height="350" style="padding: 0; margin: auto; display: block;">
+						</canvas>
+
+                        <h2>DevOps - CICD demo</h2>
                 </div>
             </div>
+
+            <div class="item">
+                <div class="slide2"></div>
+                <div class="carousel-caption">
+                    <div>
+                        <h2>Recent History</h2>
+                        <div id="colorCounts">
+                            <div class="col-md-4 border-right">
+                                <p class="totnum">-1</p>
+                                <h2>N/A</h2>
+                            </div>
+                            <div class="col-md-4 border-right">
+                                <p class="totnum">-1</p>
+                                <h2>N/A</h2>
+                            </div>
+                            <div class="col-md-4 border-right">
+                                <p class="totnum">-1</p>
+                                <h2>N/A</h2>
+                            </div>
+                        </div>
+                        <div class="text-center padtop" id="lastApiResponses">
+                            <ul>
+                                <li>&nbsp;</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="item">
+                <div class="slide3"></div>
+                <div class="carousel-caption">
+                    <div>
+                        <h2>VoteSUp Version </h2>
+                        <h3><span id="gitCommitSha">&nbsp;</span></h3>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Set the actions to take when the arrows are clicked -->
+        <a class="left carousel-control" href="#theCarousel" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"> </span>
+        </a>
+        <a class="right carousel-control" href="#theCarousel" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
     </div>
-  </div>
-  <div class="item">
-  <div class="slide3"></div>
-  <div class="carousel-caption">
-    <div>
-        <h2>VoteSUp Version </h2>
-        <h3><span id="gitCommitSha">&nbsp;</span></h3>
-    </div>
-  </div>
-  </div>
-
-  </div>
-
-  <!-- Set the actions to take when the arrows are clicked -->
-  <a class="left carousel-control" href="#theCarousel" data-slide="prev">
-  <span class="glyphicon glyphicon-chevron-left"> </span>
-  </a>
-  <a class="right carousel-control" href="#theCarousel" data-slide="next">
-  <span class="glyphicon glyphicon-chevron-right"></span>
-  </a>
-  </div>
 
 
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<!--<script src="js/bootstrap.min.js"></script>-->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <!--<script src="js/bootstrap.min.js"></script>-->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="jquery.mobile.custom.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+    <script src="chartController.js"></script>
 
-<script src="jquery.mobile.custom.min.js"></script>
- 
-         <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+    <script>
+        $(document).ready(function() {
 
-        <script src="chartController.js"></script>
+            $("#theCarousel").swiperight(function() {
+                $(this).carousel('prev');
+            });
 
- <script>
-  $(document).ready(function() {  
+            $("#theCarousel").swipeleft(function() {
+                $(this).carousel('next');
+            });
 
-  		$("#theCarousel").swiperight(function() {  
-    		  $(this).carousel('prev');  
-	    });  
-
-        $("#theCarousel").swipeleft(function() {  
-            $(this).carousel('next');  
+            $('.carousel').carousel({
+                interval: false
+            });
         });
+    </script>
 
-        $('.carousel').carousel({
-            interval: false
-        });
-	});  
-</script>
+    <script>
+        $(document).ready(voteSUpChartController);
+    </script>
+    <script src="https://use.typekit.net/ebe6oww.js"></script>
+    <script>
+        try {
+            Typekit.load({
+                async: true
+            });
+        } catch (e) {}
+    </script>
 
-        <script>
-            $(document).ready(voteSUpChartController);
-        </script>
-        <script src="https://use.typekit.net/ebe6oww.js"></script>
-        <script>try{Typekit.load({ async: true });}catch(e){}</script>
-    </body>
+</body>
+
 </html>
