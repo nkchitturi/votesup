@@ -1327,7 +1327,7 @@
                     "ProdHostedZone": {
                         "Ref": "ProdHostedZone"
                     },
-                    "VoteSUpVPCName": {
+                    "VPCStackName": {
                         "Fn::GetAtt": [
                             "VoteSUpVPC",
                             "Outputs.StackName"
@@ -1339,7 +1339,7 @@
                             "Outputs.StackName"
                         ]
                     },
-                    "VoteSUpIAMName": {
+                    "IAMStackName": {
                         "Fn::GetAtt": [
                             "VoteSUpIAM",
                             "Outputs.StackName"
@@ -1419,7 +1419,7 @@
                 }
             }
         },
-        "CodePipelineActionsStack": {
+        "VoteSUpCodePipelineActions": {
             "Type": "AWS::CloudFormation::Stack",
             "DependsOn": [
                 "VoteSUpJenkins"
@@ -1453,10 +1453,10 @@
                 }
             }
         },
-        "CodePipelineStack": {
+        "VoteSUpCodePipeline": {
             "Type": "AWS::CloudFormation::Stack",
             "DependsOn": [
-                "CodePipelineActionsStack"
+                "VoteSUpCodePipelineActions"
             ],
             "Properties": {
                 "TemplateURL": {
@@ -1522,7 +1522,7 @@
             "Description": "The URL to the instantiated pipeline",
             "Value": {
                 "Fn::GetAtt": [
-                    "CodePipelineStack",
+                    "VoteSUpCodePipeline",
                     "Outputs.CodePipelineURL"
                 ]
             }
