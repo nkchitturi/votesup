@@ -820,7 +820,7 @@
             "Type": "AWS::EC2::Instance",
             "DependsOn": [
                 "VoteSUpDynamoDB",
-                "VoteSUpStack-Outputs-Store"
+                "VoteSUpStackOutputsStore"
             ],
             "Metadata": {
                 "AWS::CloudFormation::Init": {
@@ -1146,7 +1146,7 @@
                                 "./bin/configure-jenkins.sh ",
                                 {
                                     "Fn::GetAtt": [
-                                        "VoteSUpStack-Outputs-Store",
+                                        "VoteSUpStackOutputsStore",
                                         "Outputs.StackName"
                                     ]
                                 },
@@ -1285,7 +1285,7 @@
                 }
             }
         },
-        "VoteSUpStack-Outputs-Store": {
+        "VoteSUpStackOutputsStore": {
             "Type": "AWS::CloudFormation::Stack",
             "DependsOn": [
                 "VoteSUpDynamoDB",
@@ -1360,7 +1360,7 @@
                 "VoteSUpDynamoDB",
                 "VoteSUpVPC",
                 "VoteSUpIAM",
-                "VoteSUpStack-Outputs-Store",
+                "VoteSUpStackOutputsStore",
                 "WebServerInstance"
             ],
             "Properties": {
@@ -1388,7 +1388,7 @@
                     },
                     "S3Bucket": {
                         "Fn::GetAtt": [
-                            "VoteSUpStack-Outputs-Store",
+                            "VoteSUpStackOutputsStore",
                             "Outputs.VoteSUpS3Bucket"
                         ]
                     },
@@ -1412,7 +1412,7 @@
                     },
                     "JobConfigsTarball": {
                         "Fn::GetAtt": [
-                            "VoteSUpStack-Outputs-Store",
+                            "VoteSUpStackOutputsStore",
                             "Outputs.JobConfigsTarball"
                         ]
                     }
@@ -1440,7 +1440,7 @@
                 "Parameters": {
                     "MyBuildProvider": {
                         "Fn::GetAtt": [
-                            "VoteSUpStack-Outputs-Store",
+                            "VoteSUpStackOutputsStore",
                             "Outputs.MyBuildProvider"
                         ]
                     },
@@ -1474,7 +1474,7 @@
                 "Parameters": {
                     "ArtifactStoreBucket": {
                         "Fn::GetAtt": [
-                            "VoteSUpStack-Outputs-Store",
+                            "VoteSUpStackOutputsStore",
                             "Outputs.VoteSUpS3Bucket"
                         ]
                     },
@@ -1492,7 +1492,7 @@
                     },
                     "MyBuildProvider": {
                         "Fn::GetAtt": [
-                            "VoteSUpStack-Outputs-Store",
+                            "VoteSUpStackOutputsStore",
                             "Outputs.MyBuildProvider"
                         ]
                     },
@@ -1544,7 +1544,7 @@
                         "http://",
                         {
                             "Fn::GetAtt": [
-                                "VoteSUpStack-Outputs-Store",
+                                "VoteSUpStackOutputsStore",
                                 "Outputs.VoteSUpAppURL"
                             ]
                         },
