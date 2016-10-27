@@ -1,0 +1,157 @@
+/* Carousel Styling */
+.slide1{
+  background-image: url('sun-horizon.jpeg');
+  height: 801px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.slide2{
+  background-image: url('night-stars-galaxy.jpg');
+  height: 801px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.slide3{
+  background-image: url('nature-field-summer-agriculture.jpg');
+  height: 801px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.carousel-caption {
+  top: 15px;
+}
+.carousel-caption h1{
+  font-size: 5.4em;
+  font-family: "futura-pt", cursive;
+  padding-bottom: .4em;
+}
+.carousel-caption p{
+  font-size: 3em;
+}
+/*
+.company-logo {
+  top: 20px;
+  right: 20px;
+    height: 100px;
+  width: 210px;
+}*/
+
+html {
+  font-family: "futura-pt",sans-serif;
+}
+
+/*body{
+margin-top: 40px;
+font-family: "futura-pt",sans-serif;
+}*/
+
+/*.logo {
+  margin-bottom:40px;
+  margin-top: 60px;
+}*/
+
+p {
+  font-size:36px;
+  font-family: "futura-pt",sans-serif;	
+}
+
+h2 {
+  font-size:36px;
+  padding-bottom:12px;
+  font-weight: bold;
+  font-family: "futura-pt",sans-serif;
+}
+
+h1 {
+  font-family: "futura-pt",sans-serif;
+}
+
+ul {
+  list-style: none;
+}
+
+list-style {
+  font-size: 20px;
+  display:block;
+  padding: 16px;
+  margin-bottom:2px;
+  border-radius: 2px;
+  font-family: "futura-pt",sans-serif;
+}
+
+.timestamp  {
+  font-size: 3em;
+  display:block;
+  font-weight: bold;
+  color: #e8e8e8;
+  text-transform: uppercase;
+  padding-top:12px;
+}
+
+.timestampMsg  {
+  font-size: 3em;
+}
+
+.fixed-height {
+  max-height: 590px;
+  overflow:hidden;
+}
+
+/*.totnum {
+  /* font-size: 45px;
+}*/
+
+.padtop {
+  padding-top: 60px;
+  clear:both;
+}
+
+.border-right {
+border-right: 3px solid #666;
+}
+
+.bordered {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-top:1px solid  #666;
+  border-bottom: 1px solid #666;
+  margin-top: 40px;
+}
+
+ /* Small Devices, Tablets */
+@media only screen and (max-width : 1000px) {
+      .border-right{
+      border:none;
+      }
+}
+
+body {
+  font-size: 62.5%;
+  font-family: "futura-pt", arial, sans-serif;
+}
+
+#slogo {
+  height: 90px;
+  width: 210px;
+}
+
+#logo {
+  height: 90px;
+  width: 90px;
+}
+
+#websiteTitle {
+  font-size: 9em;
+    font-weight: bold;
+  vertical-align: top;
+  font-family: 'futura-pt', arial, sans-serif;
+  padding-left: 15px;
+  color: #feffff;
+}
+
+#websiteSlogan {
+  font-size: 5.4em;
+}

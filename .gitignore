@@ -34,7 +34,7 @@ environment.sh
 ddb-local/
 
 # you might want to take this out if you ever start using files in a non-hacky way.
-cooksbooks/votesup/files/default/app
+cookbooks/votesup/files/default/app
 
 # IDE
 .idea/

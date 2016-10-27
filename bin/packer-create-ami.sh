@@ -26,4 +26,4 @@ packer build \
     -var "sg_id=$sg_id" \
     -var "ami_name=votesup_ami_created_`date +%Y%m%d%H%M%S`" \
     -var "dist_dir=dist/" \
-    cooksbooks/votesup/packer.json
+    cookbooks/votesup/packer.json

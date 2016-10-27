@@ -1,0 +1,49 @@
+{
+  "name": "votesup",
+  "version": "0.1.0",
+  "description": "DevOps CICD Demo",
+  "main": "app.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/nkchitturi/votesup.git"
+  },
+  "author": {
+    "name": "SungardAS Systems, LLC"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nkchitturi/votesup/issues"
+  },
+  "homepage": "https://github.com/nkchitturi/votesup#readme",
+  "devDependencies": {
+    "chai": "^3.2.0",
+    "del": "^1.2.1",
+    "gulp": "^3.9.0",
+    "gulp-bg": "0.0.7",
+    "gulp-download": "0.0.1",
+    "gulp-gunzip": "0.0.3",
+    "gulp-gzip": "^1.2.0",
+    "gulp-install": "^0.5.0",
+    "gulp-jshint": "^1.11.2",
+    "gulp-live-server": "0.0.28",
+    "gulp-mocha": "^2.1.3",
+    "gulp-tar": "^1.4.0",
+    "gulp-untar": "0.0.4",
+    "gulp-util": "^3.0.6",
+    "gulp-zip": "^3.2.0",
+    "mocha": "^2.2.5",
+    "request-promise": "^2.0.1",
+    "run-sequence": "^1.1.2",
+    "yargs": "^3.19.0"
+  },
+  "dependencies": {
+    "aws-sdk": "^2.2.3",
+    "express": "^4.13.3",
+    "git-rev": "^0.2.1",
+    "lambda-express": "^0.1.2",
+    "moment": "^2.10.6"
+  }
+}
