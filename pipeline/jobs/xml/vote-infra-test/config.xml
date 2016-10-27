@@ -6,9 +6,9 @@
   <properties />
   <scm class="com.amazonaws.codepipeline.jenkinsplugin.AWSCodePipelineSCM" plugin="codepipeline@0.6">
     <clearWorkspace>true</clearWorkspace>
-    <projectName>vote-promote-env</projectName>
+    <projectName>vote-infra-test</projectName>
     <actionTypeCategory>Test</actionTypeCategory>
-    <actionTypeProvider>DromedaryJenkins</actionTypeProvider>
+    <actionTypeProvider>VoteSUpJenkins</actionTypeProvider>
     <actionTypeVersion>1</actionTypeVersion>
     <region>us-east-1</region>
     <awsAccessKey></awsAccessKey>
@@ -30,12 +30,16 @@
   <concurrentBuild>true</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>bash ./pipeline/jobs/scripts/vote-promote-env.sh</command>
+      <command>bash ./pipeline/jobs/scripts/vote-infra-test.sh</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>
     <com.amazonaws.codepipeline.jenkinsplugin.AWSCodePipelinePublisher plugin="codepipeline@0.6">
-      <buildOutputs />
+      <buildOutputs>
+        <com.amazonaws.codepipeline.jenkinsplugin.AWSCodePipelinePublisher_-OutputTuple>
+          <outputString></outputString>
+        </com.amazonaws.codepipeline.jenkinsplugin.AWSCodePipelinePublisher_-OutputTuple>
+      </buildOutputs>
       <awsClientFactory/>
     </com.amazonaws.codepipeline.jenkinsplugin.AWSCodePipelinePublisher>
   </publishers>
@@ -43,5 +47,13 @@
     <hudson.plugins.ansicolor.AnsiColorBuildWrapper plugin="ansicolor@0.4.1">
       <colorMapName>xterm</colorMapName>
     </hudson.plugins.ansicolor.AnsiColorBuildWrapper>
+    <ruby-proxy-object>
+      <ruby-object ruby-class="Jenkins::Plugin::Proxies::BuildWrapper" pluginid="rvm">
+        <object ruby-class="RvmWrapper" pluginid="rvm">
+          <impl pluginid="rvm" ruby-class="String">2.2.2</impl>
+        </object>
+        <pluginid pluginid="rvm" ruby-class="String">rvm</pluginid>
+      </ruby-object>
+    </ruby-proxy-object>
   </buildWrappers>
 </project>

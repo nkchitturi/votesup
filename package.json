@@ -1,23 +1,23 @@
 {
-  "name": "dromedary",
+  "name": "votesup",
   "version": "0.1.0",
-  "description": "- SungardAS Demo Chart API",
+  "description": "DevOps CICD Demo",
   "main": "app.js",
   "scripts": {
     "test": "gulp test"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/stelligent/dromedary.git"
+    "url": "git+ssh://git@github.com/nkchitturi/votesup.git"
   },
   "author": {
     "name": "SungardAS Systems, LLC"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/stelligent/dromedary/issues"
+    "url": "https://github.com/nkchitturi/votesup/issues"
   },
-  "homepage": "https://github.com/stelligent/dromedary#readme",
+  "homepage": "https://github.com/nkchitturi/votesup#readme",
   "devDependencies": {
     "chai": "^3.2.0",
     "del": "^1.2.1",

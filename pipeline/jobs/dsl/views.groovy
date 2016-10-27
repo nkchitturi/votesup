@@ -1,7 +1,7 @@
 listView('ops') {
     description('ops')
     jobs {
-        name('job-seed')
+        name('kickoff')
         name('DA-commit-poll-scm')
         name('DA-selfservice-init')
     }
@@ -16,8 +16,8 @@ listView('ops') {
     }
 }
 
-listView('Dromedary') {
-    description('Dromedary CodePipeline Jobs')
+listView('VoteSUp') {
+    description('VoteSUp CodePipeline Jobs')
     jobs {
         regex('vote-.+')
     }

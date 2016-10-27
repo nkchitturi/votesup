@@ -3,33 +3,12 @@
   <actions/>
   <description></description>
   <keepDependencies>false</keepDependencies>
-  <properties>
-    <EnvInjectJobProperty plugin="envinject@1.91.4">
-      <info>
-        <propertiesContent>VOTESUP_S3_BUCKET=S3BUCKET_PLACEHOLDER
-VOTESUP_VPC_STACK=VPC_PLACEHOLDER
-VOTESUP_IAM_STACK=IAM_PLACEHOLDER
-VOTESUP_DDB_STACK=DDB_PLACEHOLDER
-VOTESUP_ENI_STACK=ENI_PLACEHOLDER
-VOTESUP_EC2_KEY=KEY_PLACEHOLDER
-VOTESUP_HOSTNAME=HOSTNAME_PLACEHOLDER
-VOTESUP_DOMAINNAME=DOMAINNAME_PLACEHOLDER
-VOTESUP_ZONE_ID=ZONE_ID_PLACEHOLDER
-VOTESUP_ACTION_PROVIDER=ACTION_PROVIDER_PLACEHOLDER</propertiesContent>
-        <loadFilesFromMaster>false</loadFilesFromMaster>
-      </info>
-      <on>true</on>
-      <keepJenkinsSystemVariables>true</keepJenkinsSystemVariables>
-      <keepBuildVariables>true</keepBuildVariables>
-      <overrideBuildParameters>false</overrideBuildParameters>
-      <contributors/>
-    </EnvInjectJobProperty>
-  </properties>
+  <properties />
   <scm class="com.amazonaws.codepipeline.jenkinsplugin.AWSCodePipelineSCM" plugin="codepipeline@0.6">
     <clearWorkspace>true</clearWorkspace>
-    <projectName>vote-build</projectName>
-    <actionTypeCategory>Build</actionTypeCategory>
-    <actionTypeProvider>DromedaryJenkins</actionTypeProvider>
+    <projectName>vote-create-env</projectName>
+    <actionTypeCategory>Test</actionTypeCategory>
+    <actionTypeProvider>VoteSUpJenkins</actionTypeProvider>
     <actionTypeVersion>1</actionTypeVersion>
     <region>us-east-1</region>
     <awsAccessKey></awsAccessKey>
@@ -51,7 +30,7 @@ VOTESUP_ACTION_PROVIDER=ACTION_PROVIDER_PLACEHOLDER</propertiesContent>
   <concurrentBuild>true</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>bash ./pipeline/jobs/scripts/vote-build.sh</command>
+      <command>bash ./pipeline/jobs/scripts/vote-create-env.sh</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>

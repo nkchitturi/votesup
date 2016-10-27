@@ -1,6 +1,6 @@
 {
   "AWSTemplateFormatVersion":"2010-09-09",
-    "Description": "Dromedary demo - network infrastructure",
+    "Description": "VoteSUp demo - network infrastructure",
   "Resources":{
     "VPC":{
       "Type":"AWS::EC2::VPC",

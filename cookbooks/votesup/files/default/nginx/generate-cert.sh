@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# shamelessly stolen from https://gist.github.com/bradland/1690807. 
+# Reference - https://gist.github.com/bradland/1690807. 
 
 # Script accepts a single argument, the fqdn for the cert
 DOMAIN="$1"

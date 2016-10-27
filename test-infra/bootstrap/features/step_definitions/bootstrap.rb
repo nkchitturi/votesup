@@ -11,7 +11,7 @@ Given(/^I am the bootstrapping instance$/) do
   expect(bootstrapper).to_not be_nil
 end
 
-When(/^I have finished bootstrapping Dromedary teardown$/) do
+When(/^I have finished bootstrapping VoteSUp teardown$/) do
   expect(File.file?(environment_file)).to be false
 end
 
@@ -28,12 +28,12 @@ Then(/^I should no longer have an environment file from the bootstrapper$/) do
   expect(File.file?(environment_file)).to be false
 end
 
-When(/^I have finished bootstrapping Dromedary$/) do
+When(/^I have finished bootstrapping VoteSUp$/) do
   expect(File.file?(environment_file)).to be true
 end
 
-Then(/^I should see the dromedary s3 bucket created$/) do
-  bucket = s3.head_bucket({ bucket: "dromedary-#{ENV["ACCTID"]}" })
+Then(/^I should see the votesup s3 bucket created$/) do
+  bucket = s3.head_bucket({ bucket: "votesup-#{ENV["ACCTID"]}" })
   expect(bucket).to be_empty
 end
 

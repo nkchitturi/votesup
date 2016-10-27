@@ -1,6 +1,6 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
-    "Description": "Dromedary demo - application instance",
+    "Description": "VoteSUp demo - application instance",
 
     "Parameters" : {
         "Ec2Key": {
@@ -108,7 +108,7 @@
                     },
                     "base": {
                         "files": {
-                            "/tmp/dromedary.tgz": {
+                            "/tmp/votesup.tgz": {
                                 "source": { "Fn::Join": [ "", [ "https://s3.amazonaws.com/", { "Ref" : "S3Bucket" }, "/", { "Ref": "ArtifactPath" } ]]},
                                 "authentication": "S3AccessCreds",
                                 "mode": "000644",
@@ -117,11 +117,11 @@
                             }
                         },
                         "commands": {
-                            "10-extract-dromedary": {
+                            "10-extract-votesup": {
                                 "command": { "Fn::Join" : [ "", [
                                     "mkdir -p -m755 /userdata\n",
                                     "cd /userdata\n",
-                                    "tar xzf /tmp/dromedary.tgz\n"
+                                    "tar xzf /tmp/votesup.tgz\n"
                                 ]]}
                             },
                             "20-run-chef": {
@@ -134,7 +134,7 @@
                                     "cat > /userdata/solo.rb <<SOLORB\n",
                                     "cookbook_path ['/userdata']\n",
                                     "SOLORB\n", "\n",
-                                    "chef-solo --config /userdata/solo.rb --log_level auto --force-formatter --json-attributes /userdata/dromedary/attributes.json\n",
+                                    "chef-solo --config /userdata/solo.rb --log_level auto --force-formatter --json-attributes /userdata/votesup/attributes.json\n",
                                     "node -v \n",
                                     "npm -v\n"
                                 ]]}
@@ -143,7 +143,7 @@
                     },
                     "noprereqs": {
                         "files": {
-                            "/tmp/dromedary.tgz": {
+                            "/tmp/votesup.tgz": {
                                 "source": { "Fn::Join": [ "", [ "https://s3.amazonaws.com/", { "Ref" : "S3Bucket" }, "/", { "Ref": "ArtifactPath" } ]]},
                                 "authentication": "S3AccessCreds",
                                 "mode": "000644",
@@ -152,11 +152,11 @@
                             }
                         },
                         "commands": {
-                            "10-extract-dromedary": {
+                            "10-extract-votesup": {
                                 "command": { "Fn::Join" : [ "", [
                                     "mkdir -p -m755 /userdata\n",
                                     "cd /userdata\n",
-                                    "tar xzf /tmp/dromedary.tgz\n"
+                                    "tar xzf /tmp/votesup.tgz\n"
                                 ]]}
                             },
                             "20-run-chef": {
@@ -169,7 +169,7 @@
                                     "cat > /userdata/solo.rb <<SOLORB\n",
                                     "cookbook_path ['/userdata']\n",
                                     "SOLORB\n", "\n",
-                                    "chef-solo --config /userdata/solo.rb --log_level auto --force-formatter --json-attributes /userdata/dromedary/attributes-noprereqs.json\n",
+                                    "chef-solo --config /userdata/solo.rb --log_level auto --force-formatter --json-attributes /userdata/votesup/attributes-noprereqs.json\n",
                                     "node -v \n",
                                     "npm -v\n"
                                 ]]}
@@ -229,7 +229,7 @@
                     "  cfn_init -c chef || error_exit 'Failed to run cfn-init chef'\n",
                     "fi\n",
                     "\n",
-                    "if [ -e /.dromedary-prereqs-installed ]; then\n",
+                    "if [ -e /.votesup-prereqs-installed ]; then\n",
                     "  cfn_init -c noprereqs || error_exit 'Failed to run cfn-init noprereqs'\n",
                     "else\n",
                     "  yum -y upgrade\n",
@@ -247,11 +247,11 @@
 
     "Outputs": {
         "PublicDns": {
-            "Description": "Public DNS of Dromedary App instance",
+            "Description": "Public DNS of VoteSUp App instance",
             "Value": { "Fn::GetAtt": [ "WebServerInstance", "PublicIp" ]}
         },
         "InstanceId": {
-            "Description": "Dromedary App instance id",
+            "Description": "VoteSUp App instance id",
             "Value": { "Ref": "WebServerInstance" }
         },
         "InstanceSecurityGroup": {

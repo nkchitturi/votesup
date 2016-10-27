@@ -23,5 +23,5 @@ end
 # TODO Use a gem for this instead of fork & exec'ing curl
 describe command('curl -s http://localhost') do
 # describe command('curl --insecure -s https://localhost') do
-  its(:stdout) { should match /Dromedary/ }
+  its(:stdout) { should match /VoteSUp/ }
 end

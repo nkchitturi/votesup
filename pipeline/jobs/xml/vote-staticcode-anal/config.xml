@@ -8,7 +8,7 @@
     <clearWorkspace>true</clearWorkspace>
     <projectName>vote-staticcode-anal</projectName>
     <actionTypeCategory>Test</actionTypeCategory>
-    <actionTypeProvider>DromedaryJenkins</actionTypeProvider>
+    <actionTypeProvider>VoteSUpJenkins</actionTypeProvider>
     <actionTypeVersion>1</actionTypeVersion>
     <region>us-east-1</region>
     <awsAccessKey></awsAccessKey>

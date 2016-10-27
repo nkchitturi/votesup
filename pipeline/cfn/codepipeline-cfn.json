@@ -1,6 +1,6 @@
 {
   "AWSTemplateFormatVersion":"2010-09-09",
-  "Description":"Dromedary CodePipeline provisioning",
+  "Description":"VoteSUp CodePipeline provisioning",
   "Parameters":{
     "ArtifactStoreBucket":{
       "Type":"String",
@@ -20,7 +20,7 @@
     "Repo":{
       "Type":"String",
       "Description":"GitHub Repo to pull from. Only the Name. not the URL",
-      "Default":"dromedary"
+      "Default":"votesup"
     },
     "Branch":{
       "Type":"String",
@@ -29,7 +29,7 @@
     },
     "MyInputArtifacts":{
       "Type":"String",
-      "Default":"DromedarySource"
+      "Default":"VoteSUpSource"
     },
     "MyBuildProvider":{
       "Type":"String",
@@ -113,7 +113,7 @@
                 },
                 "OutputArtifacts":[
                   {
-                    "Name":"DromedaryBuild"
+                    "Name":"VoteSUpBuild"
                   }
                 ],
                 "Configuration":{
@@ -179,7 +179,7 @@
               {
                 "InputArtifacts":[
                   {
-                    "Name":"DromedaryBuild"
+                    "Name":"VoteSUpBuild"
                   }
                 ],
                 "Name":"CreateEnvironment",
@@ -193,7 +193,7 @@
                 },
                 "OutputArtifacts":[
                   {
-                    "Name":"DromedaryCreate"
+                    "Name":"VoteSUpCreate"
                   }
                 ],
                 "Configuration":{
@@ -204,7 +204,7 @@
               {
                 "InputArtifacts":[
                   {
-                    "Name":"DromedaryCreate"
+                    "Name":"VoteSUpCreate"
                   }
                 ],
                 "Name":"AcceptanceTest",
@@ -218,7 +218,7 @@
                 },
                 "OutputArtifacts":[
                   {
-                    "Name":"DromedaryAccepted"
+                    "Name":"VoteSUpAccepted"
                   }
                 ],
                 "Configuration":{
@@ -229,7 +229,7 @@
               {
                 "InputArtifacts":[
                   {
-                    "Name":"DromedaryCreate"
+                    "Name":"VoteSUpCreate"
                   }
                 ],
                 "Name":"InfrastructureTest",
@@ -243,7 +243,7 @@
                 },
                 "OutputArtifacts":[
                   {
-                    "Name":"DromedaryInfra"
+                    "Name":"VoteSUpInfra"
                   }
                 ],
                 "Configuration":{
@@ -259,7 +259,7 @@
               {
                 "InputArtifacts":[
                   {
-                    "Name":"DromedaryAccepted"
+                    "Name":"VoteSUpAccepted"
                   }
                 ],
                 "Name":"PromoteEnvironment",

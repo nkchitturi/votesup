@@ -1,2 +1,2 @@
-mkdir -p /dromedary/log
-/usr/bin/forever /dromedary/app.js > /dromedary/log/server.log 2>&1 &
+mkdir -p /votesup/log
+/usr/bin/forever /votesup/app.js > /votesup/log/server.log 2>&1 &

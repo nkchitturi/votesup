@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: dromedary
+# Cookbook Name:: votesup
 # Recipe:: nodejs
 #
 # Copyright (C) 2015 SungardAS

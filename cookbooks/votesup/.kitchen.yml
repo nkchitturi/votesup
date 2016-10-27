@@ -24,7 +24,7 @@ platforms:
 suites:
   - name: default
     run_list:
-      - recipe[dromedary::prereqs]
-      - recipe[dromedary]
+      - recipe[votesup::prereqs]
+      - recipe[votesup]
     attributes:
       region: us-east-1

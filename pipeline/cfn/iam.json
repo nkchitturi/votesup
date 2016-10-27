@@ -1,6 +1,6 @@
 {
   "AWSTemplateFormatVersion":"2010-09-09",
-  "Description":"Dromedary demo - iam roles & policies and instance-profiles",
+  "Description":"VoteSUp demo - iam roles & policies and instance-profiles",
   "Resources":{
     "InstanceRole":{
       "Type":"AWS::IAM::Role",
@@ -140,7 +140,7 @@
                   ],
                   "Resource":[
                     "arn:aws:s3:::codepipeline*",
-                    "arn:aws:s3:::dromedary*",
+                    "arn:aws:s3:::votesup*",
                     "arn:aws:s3:::elasticbeanstalk*"
                   ],
                   "Effect":"Allow"

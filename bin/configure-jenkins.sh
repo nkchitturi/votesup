@@ -18,7 +18,7 @@ IAMStackName="$(aws cloudformation describe-stacks --stack-name $pipeline_store_
 DDBStackName="$(aws cloudformation describe-stacks --stack-name $pipeline_store_stackname --output text --query 'Stacks[0].Outputs[?OutputKey==`DDBStackName`].OutputValue')"
 ENIStackName="$(aws cloudformation describe-stacks --stack-name $pipeline_store_stackname --output text --query 'Stacks[0].Outputs[?OutputKey==`ENIStackName`].OutputValue')"
 MasterStackName="$(aws cloudformation describe-stacks --stack-name $pipeline_store_stackname --output text --query 'Stacks[0].Outputs[?OutputKey==`MasterStackName`].OutputValue')"
-votesup_s3_bucket=dromedary-"$(aws cloudformation describe-stacks --stack-name $pipeline_store_stackname --output text --query 'Stacks[0].Outputs[?OutputKey==`DromedaryS3Bucket`].OutputValue')"
+votesup_s3_bucket=votesup-"$(aws cloudformation describe-stacks --stack-name $pipeline_store_stackname --output text --query 'Stacks[0].Outputs[?OutputKey==`VoteSUpS3Bucket`].OutputValue')"
 votesup_branch="$(aws cloudformation describe-stacks --stack-name $pipeline_store_stackname --output text --query 'Stacks[0].Outputs[?OutputKey==`Branch`].OutputValue')"
 votesup_ec2_key="$(aws cloudformation describe-stacks --stack-name $pipeline_store_stackname --output text --query 'Stacks[0].Outputs[?OutputKey==`KeyName`].OutputValue')"
 
@@ -59,7 +59,7 @@ votesup_eni_stack_name="$(aws cloudformation describe-stacks --stack-name $pipel
 #votesup_eni_stack_name="ENIStack$(echo $uuid)"
 jenkins_custom_action_provider_name="Jenkins$(echo $uuid)"
 
-temp_dir=$(mktemp -d /tmp/dromedary.XXXX)
+temp_dir=$(mktemp -d /tmp/votesup.XXXX)
 config_dir="$(dirname $0)/../pipeline/jobs/xml"
 config_tar_path="$MasterStackName/jenkins-job-configs-$uuid.tgz"
 
@@ -87,10 +87,10 @@ echo "The value of eni_subnet_id is $eni_subnet_id"
 cp -r $config_dir/* $temp_dir/
 pushd $temp_dir > /dev/null
 for f in */config.xml; do
-    sed s/DromedaryJenkins/$jenkins_custom_action_provider_name/ $f > $f.new && mv $f.new $f
+    sed s/VoteSUpJenkins/$jenkins_custom_action_provider_name/ $f > $f.new && mv $f.new $f
 done
 sed s/S3BUCKET_PLACEHOLDER/$votesup_s3_bucket/ vote-build/config.xml > vote-build/config.xml.new && mv vote-build/config.xml.new vote-build/config.xml
-sed s/BRANCH_PLACEHOLDER/$votesup_branch/ job-seed/config.xml > job-seed/config.xml.new && mv job-seed/config.xml.new job-seed/config.xml
+sed s/BRANCH_PLACEHOLDER/$votesup_branch/ kickoff/config.xml > kickoff/config.xml.new && mv kickoff/config.xml.new kickoff/config.xml
 sed s/VPC_PLACEHOLDER/$votesup_vpc_stack_name/ vote-build/config.xml > vote-build/config.xml.new && mv vote-build/config.xml.new vote-build/config.xml
 sed s/IAM_PLACEHOLDER/$votesup_iam_stack_name/ vote-build/config.xml > vote-build/config.xml.new && mv vote-build/config.xml.new vote-build/config.xml
 sed s/DDB_PLACEHOLDER/$votesup_ddb_stack_name/ vote-build/config.xml > vote-build/config.xml.new && mv vote-build/config.xml.new vote-build/config.xml
@@ -116,7 +116,7 @@ aws cloudformation update-stack \
     --use-previous-template \
     --capabilities="CAPABILITY_IAM" \
     --parameters ParameterKey=UUID,ParameterValue=$uuid \
-        ParameterKey=DromedaryS3Bucket,ParameterValue=$votesup_s3_bucket \
+        ParameterKey=VoteSUpS3Bucket,ParameterValue=$votesup_s3_bucket \
         ParameterKey=Branch,ParameterValue=$votesup_branch \
         ParameterKey=MasterStackName,ParameterValue=$MasterStackName \
         ParameterKey=JobConfigsTarball,ParameterValue=$config_tar_path \
@@ -128,7 +128,7 @@ aws cloudformation update-stack \
         ParameterKey=IAMStackName,ParameterValue=$IAMStackName \
         ParameterKey=DDBStackName,ParameterValue=$DDBStackName \
         ParameterKey=ENIStackName,ParameterValue=$votesup_eni_stack_name \
-        ParameterKey=DromedaryAppURL,ParameterValue=$prod_dns_param \
+        ParameterKey=VoteSUpAppURL,ParameterValue=$prod_dns_param \
         ParameterKey=KeyName,ParameterValue=$votesup_ec2_key
  
 sleep 60

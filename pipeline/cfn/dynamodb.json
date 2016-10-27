@@ -1,6 +1,6 @@
 {
   "AWSTemplateFormatVersion":"2010-09-09",
-  "Description":"Dromedary demo - DynamoDB Table",
+  "Description":"VoteSUp demo - DynamoDB Table",
   "Parameters":{
     "ReadCapacityUnits":{
       "Type":"Number",
@@ -14,7 +14,7 @@
     },
     "DDBTableName":{
       "Type":"String",
-      "Description":"Unique name for the Dromedary Dynamo DB table"
+      "Description":"Unique name for the VoteSUp Dynamo DB table"
     }
   },
   "Resources":{

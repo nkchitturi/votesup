@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: dromedary
+# Cookbook Name:: votesup
 # Recipe:: nginx_config
 #
 # Copyright (C) 2015 SungardAS
@@ -7,8 +7,8 @@
 # All rights reserved - Do Not Redistribute
 #
 
-cookbook_file '/etc/nginx/sites-available/dromedary' do
-  source 'nginx/ssl-dromedary-site.cfg'
+cookbook_file '/etc/nginx/sites-available/votesup' do
+  source 'nginx/ssl-votesup-site.cfg'
   owner 'root'
   group 'root'
   mode '0644'
@@ -25,7 +25,7 @@ end
 
 execute 'generate-cert' do
   cwd '/tmp'
-  command '/tmp/generate-cert.sh dromedary' 
+  command '/tmp/generate-cert.sh votesup' 
 end
 
 directory '/etc/nginx/ssl/' do
@@ -36,7 +36,7 @@ directory '/etc/nginx/ssl/' do
 end
 
 remote_file '/etc/nginx/ssl/nginx.crt' do
-  source 'file:///tmp/dromedary.crt'
+  source 'file:///tmp/votesup.crt'
   owner 'root'
   group 'root'
   mode '0755'
@@ -44,7 +44,7 @@ remote_file '/etc/nginx/ssl/nginx.crt' do
 end
 
 remote_file '/etc/nginx/ssl/nginx.key' do
-  source 'file:///tmp/dromedary.key'
+  source 'file:///tmp/votesup.key'
   owner 'root'
   group 'root'
   mode '0755'
@@ -52,7 +52,7 @@ remote_file '/etc/nginx/ssl/nginx.key' do
 end
 
 link '/etc/nginx/sites-enabled/000-default' do
-  to '/etc/nginx/sites-available/dromedary'
+  to '/etc/nginx/sites-available/votesup'
 end
 
 service 'nginx' do

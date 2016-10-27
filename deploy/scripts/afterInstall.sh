@@ -1,4 +1,4 @@
 # this space intentionally left blank
-pushd /dromedary
+pushd /votesup
 npm install
 popd

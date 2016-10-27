@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: dromedary
+# Cookbook Name:: votesup
 # Recipe:: prereqs
 #
 # Copyright (C) 2015 SungardAS
@@ -16,11 +16,11 @@ if ['ubuntu'].include?(node['platform'])
 end
 
 include_recipe 'nginx'
-include_recipe 'dromedary::nodejs'
-include_recipe 'dromedary::yum_packages'
+include_recipe 'votesup::nodejs'
+include_recipe 'votesup::yum_packages'
 
 service 'nginx' do
   action [ :stop, :disable ]
 end
 
-execute 'touch /.dromedary-prereqs-installed'
+execute 'touch /.votesup-prereqs-installed'

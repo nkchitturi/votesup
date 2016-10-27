@@ -1,6 +1,6 @@
 {
   "AWSTemplateFormatVersion":"2010-09-09",
-  "Description":"Master dromedary stack that calls nested stacks",
+  "Description":"Master votesup stack that calls nested stacks",
   "Parameters":{
     "KeyName":{
       "Description":"Name of an existing EC2 KeyPair to enable SSH access to the instances",
@@ -9,8 +9,8 @@
     },
     "Repo":{
       "Type":"String",
-      "Description":"The name of the dromedary repository, not the URL",
-      "Default":"dromedary"
+      "Description":"The name of the votesup repository, not the URL",
+      "Default":"votesup"
     },
     "GitHubToken":{
       "NoEcho":"true",
@@ -24,7 +24,7 @@
     },
     "BaseTemplateURL":{
       "Type":"String",
-      "Description":"S3 Base URL of all the CloudFormation templated used in Dromedary (without the file names)",
+      "Description":"S3 Base URL of all the CloudFormation templated used in VoteSUp (without the file names)",
       "Default":"https://s3.amazonaws.com/classicnode-demosungardas/master/"
     },
     "VPCCFNTemplateFile":{
@@ -72,11 +72,11 @@
       "MinLength":"1",
       "MaxLength":"32",
       "Default":"vtab",
-      "Description":"Unique name for the generated Dromedary Dynamo DB table."
+      "Description":"Unique name for the generated VoteSUp Dynamo DB table."
     },
     "Branch":{
       "Type":"String",
-      "Description":"The GitHub branch to the public Dromedary repository.",
+      "Description":"The GitHub branch to the public VoteSUp repository.",
       "Default":"master"
     },
     "Domain":{
@@ -1133,7 +1133,7 @@
                 },
                 "\n",
                 "yum install -y git\n",
-                "rm -rf /opt/dromedary\n",
+                "rm -rf /opt/votesup\n",
                 "git clone -b ",
                 {
                   "Ref":"Branch"
@@ -1155,13 +1155,13 @@
                     ]
                   ]
                 },
-                " /opt/dromedary\n",
+                " /opt/votesup\n",
                 "export AWS_DEFAULT_REGION=",
                 {
                   "Ref":"AWS::Region"
                 },
                 "\n",
-                "cd /opt/dromedary\n",
+                "cd /opt/votesup\n",
                 "./bin/configure-jenkins.sh ",
                 {
                   "Fn::GetAtt":[
@@ -1342,7 +1342,7 @@
           "MasterStackName":{
             "Ref":"AWS::StackName"
           },
-          "DromedaryS3Bucket":{
+          "VoteSUpS3Bucket":{
             "Ref":"AWS::AccountId"
           },
           "Branch":{
@@ -1421,7 +1421,7 @@
           "S3Bucket":{
             "Fn::GetAtt":[
               "PipelineStoreStack",
-              "Outputs.DromedaryS3Bucket"
+              "Outputs.VoteSUpS3Bucket"
             ]
           },
           "CfnInitRole":{
@@ -1511,7 +1511,7 @@
           "ArtifactStoreBucket":{
             "Fn::GetAtt":[
               "PipelineStoreStack",
-              "Outputs.DromedaryS3Bucket"
+              "Outputs.VoteSUpS3Bucket"
             ]
           },
           "GitHubToken":{
@@ -1572,8 +1572,8 @@
         ]
       }
     },
-    "DromedaryAppURL":{
-      "Description":"The URL to Dromedary application. Only operations once a pipeline has completed its first run.",
+    "VoteSUpAppURL":{
+      "Description":"The URL to VoteSUp application. Only operations once a pipeline has completed its first run.",
       "Value":{
         "Fn::Join":[
           "",
@@ -1582,7 +1582,7 @@
             {
               "Fn::GetAtt":[
                 "PipelineStoreStack",
-                "Outputs.DromedaryAppURL"
+                "Outputs.VoteSUpAppURL"
               ]
             },
             "/"

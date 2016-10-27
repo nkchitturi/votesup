@@ -24,7 +24,7 @@ vpc="$(aws cloudformation describe-stacks --stack-name $votesup_vpc_stack_name -
 app_instance_profile="$(aws cloudformation describe-stacks --stack-name $votesup_iam_stack_name --output text --query 'Stacks[0].Outputs[?OutputKey==`InstanceProfile`].OutputValue')"
 app_instance_role="$(aws cloudformation describe-stacks --stack-name $votesup_iam_stack_name --output text --query 'Stacks[0].Outputs[?OutputKey==`InstanceRole`].OutputValue')"
 app_ddb_table="$(aws cloudformation describe-stacks --stack-name $votesup_ddb_stack_name --output text --query 'Stacks[0].Outputs[?OutputKey==`TableName`].OutputValue')"
-app_custom_action_provider_name="DromedaryJnkns$(date +%s)"
+app_custom_action_provider_name="VoteSUpJnkns$(date +%s)"
 
 votesup_app_stack_name="$votesup_hostname-$(basename $votesup_artifact .tar.gz)"
 aws cloudformation create-stack \

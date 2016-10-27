@@ -1,5 +1,5 @@
 #
-# Cookbook Name:: dromedary
+# Cookbook Name:: votesup
 # Recipe:: node_modules
 #
 # Copyright (C) 2015 SungardAS
@@ -7,7 +7,7 @@
 # All rights reserved - Do Not Redistribute
 #
 
-remote_directory '/dromedary' do
+remote_directory '/votesup' do
   source 'app'
   owner 'root'
   group 'root'
@@ -15,14 +15,14 @@ remote_directory '/dromedary' do
   action :create
 end
 
-directory '/dromedary/log' do
+directory '/votesup/log' do
   owner 'root'
   group 'root'
   mode '0755'
   action :create
 end
 
-bash 'dromedary' do
+bash 'votesup' do
   user 'root'
   flags '-ex'
   code <<-EOH
@@ -30,6 +30,6 @@ if /usr/local/bin/forever list | grep -q '^data:'; then
   /usr/local/bin/forever stopall
   sleep 1
 fi
-/usr/local/bin/forever /dromedary/app.js >> /dromedary/log/server.log 2>&1 &
+/usr/local/bin/forever /votesup/app.js >> /votesup/log/server.log 2>&1 &
 EOH
 end

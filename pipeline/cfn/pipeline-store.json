@@ -12,7 +12,7 @@
       "Default":"EMPTY",
       "Description":"Name of the master.json CFN stack"
     },
-    "DromedaryS3Bucket":{
+    "VoteSUpS3Bucket":{
       "Type":"String",
       "Default":"EMPTY",
       "Description":"Name of S3 bucket used to store Jenkins config"
@@ -20,7 +20,7 @@
     "Branch":{
       "Type":"String",
       "Default":"EMPTY",
-      "Description":"Name of Dromedary Github branch"
+      "Description":"Name of VoteSUp Github branch"
     },
     "KeyName":{
       "Type":"String",
@@ -35,7 +35,7 @@
     "JobConfigsTarball":{
       "Type":"String",
       "Default":"EMPTY",
-      "Description":"S3 key for DromedaryS3Bucket"
+      "Description":"S3 key for VoteSUpS3Bucket"
     },
     "Hostname":{
       "Type":"String",
@@ -72,10 +72,10 @@
       "Default":"EMPTY",
       "Description":"A stack name reference to app-eni.json"
     },
-    "DromedaryAppURL":{
+    "VoteSUpAppURL":{
       "Type":"String",
       "Default":"EMPTY",
-      "Description":"The URL users use to launch the Dromedary application"
+      "Description":"The URL users use to launch the VoteSUp application"
     }
   },
   "Resources":{
@@ -113,10 +113,10 @@
         "Ref":"MasterStackName"
       }
     },
-    "DromedaryS3Bucket":{
+    "VoteSUpS3Bucket":{
       "Description":"Name of S3 bucket used to store Jenkins config",
       "Value":{
-        "Ref":"DromedaryS3Bucket"
+        "Ref":"VoteSUpS3Bucket"
       }
     },
     "Branch":{
@@ -138,7 +138,7 @@
       }
     },
     "JobConfigsTarball":{
-      "Description":"S3 key for DromedaryS3Bucket",
+      "Description":"S3 key for VoteSUpS3Bucket",
       "Value":{
         "Ref":"JobConfigsTarball"
       }
@@ -185,10 +185,10 @@
         "Ref":"ENIStackName"
       }
     },
-    "DromedaryAppURL":{
-      "Description":"The URL users use to launch the Dromedary application",
+    "VoteSUpAppURL":{
+      "Description":"The URL users use to launch the VoteSUp application",
       "Value":{
-        "Ref":"DromedaryAppURL"
+        "Ref":"VoteSUpAppURL"
       }
     }
   }

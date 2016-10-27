@@ -1,5 +1,5 @@
 {
     "run_list": [
-        "recipe[dromedary::default]"
+        "recipe[votesup::default]"
     ]
 }

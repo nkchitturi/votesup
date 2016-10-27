@@ -1,5 +1,5 @@
 DEPENDENCIES
-  dromedary
+  votesup
     path: .
     metadata: true
 
@@ -8,7 +8,7 @@ GRAPH
   bluepill (2.3.1)
     rsyslog (>= 0.0.0)
   build-essential (2.2.3)
-  dromedary (0.1.0)
+  votesup (0.1.0)
     nginx (>= 0.0.0)
   nginx (2.7.6)
     apt (~> 2.2)

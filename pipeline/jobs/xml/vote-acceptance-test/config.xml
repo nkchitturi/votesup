@@ -6,9 +6,9 @@
   <properties />
   <scm class="com.amazonaws.codepipeline.jenkinsplugin.AWSCodePipelineSCM" plugin="codepipeline@0.6">
     <clearWorkspace>true</clearWorkspace>
-    <projectName>vote-create-env</projectName>
+    <projectName>vote-acceptance-test</projectName>
     <actionTypeCategory>Test</actionTypeCategory>
-    <actionTypeProvider>DromedaryJenkins</actionTypeProvider>
+    <actionTypeProvider>VoteSUpJenkins</actionTypeProvider>
     <actionTypeVersion>1</actionTypeVersion>
     <region>us-east-1</region>
     <awsAccessKey></awsAccessKey>
@@ -30,7 +30,7 @@
   <concurrentBuild>true</concurrentBuild>
   <builders>
     <hudson.tasks.Shell>
-      <command>bash ./pipeline/jobs/scripts/vote-create-env.sh</command>
+      <command>bash ./pipeline/jobs/scripts/vote-acceptance-test.sh</command>
     </hudson.tasks.Shell>
   </builders>
   <publishers>

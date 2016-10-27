@@ -1,6 +1,6 @@
-# dromedary-cookbook
+# votesup-cookbook
 
-Cookbook for setting up the Dromedary application and any preqrequisites. 
+Cookbook for setting up the VoteSUp application and any preqrequisites. 
 
 ## Supported Platforms
 
@@ -16,13 +16,13 @@ Tested with AWS Linux. Should work on CentOS as well. Ubuntu no promises.
     <th>Default</th>
   </tr>
   <tr>
-    <td><tt>['dromedary']['S3Bucket']</tt></td>
+    <td><tt>['votesup']['S3Bucket']</tt></td>
     <td>String</td>
     <td>The name of the S3 bucket that artifacts are stored in by the scripts and pipeline</td>
     <td><tt>true</tt></td>
   </tr>
   <tr>
-    <td><tt>['dromedary']['ArtifactPath']</tt></td>
+    <td><tt>['votesup']['ArtifactPath']</tt></td>
     <td>String</td>
     <td>The name of the artifact in the S3 bucket to deploy.</td>
     <td><tt>true</tt></td>
@@ -31,22 +31,22 @@ Tested with AWS Linux. Should work on CentOS as well. Ubuntu no promises.
 
 ## Usage
 
-### dromedary::default
+### votesup::default
 
-Include `dromedary` in your node's `run_list`:
+Include `votesup` in your node's `run_list`:
 
 ```json
 {
   "run_list": [
-    "recipe[dromedary::default]" 
-    "recipe[dromedary::install_dromedary]""
+    "recipe[votesup::default]" 
+    "recipe[votesup::install_votesup]""
 
   ]
 }
 ```
 
 `default` will install all prereqs.
-`install_dromedary` will install the app.
+`install_votesup` will install the app.
 
 ## Testing
 

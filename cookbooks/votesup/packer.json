@@ -28,7 +28,7 @@
                 "{{user `dist_dir`}}"
             ],
             "run_list": [
-                "dromedary::prereqs"
+                "votesup::prereqs"
             ]
         }
     ]

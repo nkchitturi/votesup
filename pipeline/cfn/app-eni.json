@@ -75,7 +75,7 @@
         "HostedZoneName":{
           "Ref":"Domain"
         },
-        "Comment":"DNS name for Dromedary prod.",
+        "Comment":"DNS name for VoteSUp prod.",
         "Name":{
           "Fn::Join":[
             "",
@@ -102,7 +102,7 @@
     "ENI":{
       "Type":"AWS::EC2::NetworkInterface",
       "Properties":{
-        "Description":"Dromedary Prod ENI",
+        "Description":"VoteSUp Prod ENI",
         "SubnetId":{
           "Ref":"SubnetId"
         },

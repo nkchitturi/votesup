@@ -1,10 +1,10 @@
 {
   "AWSTemplateFormatVersion":"2010-09-09",
-  "Description":"Dromedary CodePipeline Custom Action Provisioning",
+  "Description":"VoteSUp CodePipeline Custom Action Provisioning",
   "Parameters":{
     "MyInputArtifacts":{
       "Type":"String",
-      "Default":"DromedarySource"
+      "Default":"VoteSUpSource"
     },
     "MyBuildProvider":{
       "Type":"String"
