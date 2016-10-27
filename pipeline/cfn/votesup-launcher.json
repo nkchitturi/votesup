@@ -767,7 +767,7 @@
     "LogRole":{
       "Type":"AWS::IAM::Role",
       "DependsOn":[
-        "DynamoDBStack"
+        "VoteSUp-DynamoDB"
       ],
       "Properties":{
         "AssumeRolePolicyDocument":{
@@ -805,7 +805,7 @@
     "LogRoleInstanceProfile":{
       "Type":"AWS::IAM::InstanceProfile",
       "DependsOn":[
-        "DynamoDBStack"
+        "VoteSUp-DynamoDB"
       ],
       "Properties":{
         "Path":"/",
@@ -819,7 +819,7 @@
     "CloudFormationLogs":{
       "Type":"AWS::Logs::LogGroup",
       "DependsOn":[
-        "DynamoDBStack"
+        "VoteSUp-DynamoDB"
       ],
       "Properties":{
         "RetentionInDays":7
@@ -828,8 +828,8 @@
     "WebServerInstance":{
       "Type":"AWS::EC2::Instance",
       "DependsOn":[
-        "DynamoDBStack",
-        "PipelineStoreStack"
+        "VoteSUp-DynamoDB",
+        "VoteSUpStack-Outputs-Store"
       ],
       "Metadata":{
         "AWS::CloudFormation::Init":{
@@ -1165,7 +1165,7 @@
                 "./bin/configure-jenkins.sh ",
                 {
                   "Fn::GetAtt":[
-                    "PipelineStoreStack",
+                    "VoteSUpStack-Outputs-Store",
                     "Outputs.StackName"
                   ]
                 },
@@ -1215,7 +1215,7 @@
         ]
       }
     },
-    "DynamoDBStack":{
+    "VoteSUp-DynamoDB":{
       "Type":"AWS::CloudFormation::Stack",
       "Properties":{
         "TemplateURL":{
@@ -1239,7 +1239,7 @@
         }
       }
     },
-    "VPCStack":{
+    "VoteSUp-VPC":{
       "Type":"AWS::CloudFormation::Stack",
       "Properties":{
         "TemplateURL":{
@@ -1258,7 +1258,7 @@
         "TimeoutInMinutes":"60"
       }
     },
-    "IAMStack":{
+    "VoteSUp-IAM":{
       "Type":"AWS::CloudFormation::Stack",
       "Properties":{
         "TemplateURL":{
@@ -1277,10 +1277,10 @@
         "TimeoutInMinutes":"60"
       }
     },
-    "ENIStack":{
+    "VoteSUp-ENI":{
       "Type":"AWS::CloudFormation::Stack",
       "DependsOn":[
-        "VPCStack"
+        "VoteSUp-VPC"
       ],
       "Properties":{
         "TemplateURL":{
@@ -1306,19 +1306,19 @@
           },
           "SubnetId":{
             "Fn::GetAtt":[
-              "VPCStack",
+              "VoteSUp-VPC",
               "Outputs.SubnetId"
             ]
           }
         }
       }
     },
-    "PipelineStoreStack":{
+    "VoteSUpStack-Outputs-Store":{
       "Type":"AWS::CloudFormation::Stack",
       "DependsOn":[
-        "DynamoDBStack",
-        "VPCStack",
-        "IAMStack"
+        "VoteSUp-DynamoDB",
+        "VoteSUp-VPC",
+        "VoteSUp-IAM"
       ],
       "Properties":{
         "TemplateURL":{
@@ -1357,40 +1357,40 @@
           "ProdHostedZone":{
             "Ref":"ProdHostedZone"
           },
-          "VPCStackName":{
+          "VoteSUp-VPCName":{
             "Fn::GetAtt":[
-              "VPCStack",
+              "VoteSUp-VPC",
               "Outputs.StackName"
             ]
           },
           "DDBStackName":{
             "Fn::GetAtt":[
-              "DynamoDBStack",
+              "VoteSUp-DynamoDB",
               "Outputs.StackName"
             ]
           },
-          "IAMStackName":{
+          "VoteSUp-IAMName":{
             "Fn::GetAtt":[
-              "IAMStack",
+              "VoteSUp-IAM",
               "Outputs.StackName"
             ]
           },
           "ENIStackName":{
             "Fn::GetAtt":[
-              "ENIStack",
+              "VoteSUp-ENI",
               "Outputs.StackName"
             ]
           }
         }
       }
     },
-    "JenkinsStack":{
+    "VoteSUp-Jenkins":{
       "Type":"AWS::CloudFormation::Stack",
       "DependsOn":[
-        "DynamoDBStack",
-        "VPCStack",
-        "IAMStack",
-        "PipelineStoreStack",
+        "VoteSUp-DynamoDB",
+        "VoteSUp-VPC",
+        "VoteSUp-IAM",
+        "VoteSUpStack-Outputs-Store",
         "WebServerInstance"
       ],
       "Properties":{
@@ -1411,7 +1411,7 @@
         "Parameters":{
           "SubnetId":{
             "Fn::GetAtt":[
-              "VPCStack",
+              "VoteSUp-VPC",
               "Outputs.SubnetId"
             ]
           },
@@ -1420,31 +1420,31 @@
           },
           "S3Bucket":{
             "Fn::GetAtt":[
-              "PipelineStoreStack",
+              "VoteSUpStack-Outputs-Store",
               "Outputs.VoteSUpS3Bucket"
             ]
           },
           "CfnInitRole":{
             "Fn::GetAtt":[
-              "IAMStack",
+              "VoteSUp-IAM",
               "Outputs.InstanceRole"
             ]
           },
           "VPC":{
             "Fn::GetAtt":[
-              "VPCStack",
+              "VoteSUp-VPC",
               "Outputs.VPC"
             ]
           },
           "InstanceProfile":{
             "Fn::GetAtt":[
-              "IAMStack",
+              "VoteSUp-IAM",
               "Outputs.InstanceProfile"
             ]
           },
           "JobConfigsTarball":{
             "Fn::GetAtt":[
-              "PipelineStoreStack",
+              "VoteSUpStack-Outputs-Store",
               "Outputs.JobConfigsTarball"
             ]
           }
@@ -1454,7 +1454,7 @@
     "CodePipelineActionsStack":{
       "Type":"AWS::CloudFormation::Stack",
       "DependsOn":[
-        "JenkinsStack"
+        "VoteSUp-Jenkins"
       ],
       "Properties":{
         "TemplateURL":{
@@ -1474,13 +1474,13 @@
         "Parameters":{
           "MyBuildProvider":{
             "Fn::GetAtt":[
-              "PipelineStoreStack",
+              "VoteSUpStack-Outputs-Store",
               "Outputs.MyBuildProvider"
             ]
           },
           "MyJenkinsURL":{
             "Fn::GetAtt":[
-              "JenkinsStack",
+              "VoteSUp-Jenkins",
               "Outputs.JenkinsURL"
             ]
           }
@@ -1510,7 +1510,7 @@
         "Parameters":{
           "ArtifactStoreBucket":{
             "Fn::GetAtt":[
-              "PipelineStoreStack",
+              "VoteSUpStack-Outputs-Store",
               "Outputs.VoteSUpS3Bucket"
             ]
           },
@@ -1528,19 +1528,19 @@
           },
           "MyBuildProvider":{
             "Fn::GetAtt":[
-              "PipelineStoreStack",
+              "VoteSUpStack-Outputs-Store",
               "Outputs.MyBuildProvider"
             ]
           },
           "MyJenkinsURL":{
             "Fn::GetAtt":[
-              "JenkinsStack",
+              "VoteSUp-Jenkins",
               "Outputs.JenkinsURL"
             ]
           },
           "CodePipelineServiceRole":{
             "Fn::GetAtt":[
-              "IAMStack",
+              "VoteSUp-IAM",
               "Outputs.CodePipelineTrustRoleARN"
             ]
           }
@@ -1567,7 +1567,7 @@
       "Description":"The URL to Jenkins server that runs the execution of jobs for CodePipeline",
       "Value":{
         "Fn::GetAtt":[
-          "JenkinsStack",
+          "VoteSUp-Jenkins",
           "Outputs.JenkinsURL"
         ]
       }
@@ -1581,7 +1581,7 @@
             "http://",
             {
               "Fn::GetAtt":[
-                "PipelineStoreStack",
+                "VoteSUpStack-Outputs-Store",
                 "Outputs.VoteSUpAppURL"
               ]
             },
