@@ -30,42 +30,42 @@
     "VPCCFNTemplateFile":{
       "Type":"String",
       "Description":"Just the name of the CloudFormation template. Used with BaseTemplateURL.",
-      "Default":"vpc.json"
+      "Default":"votesup-vpc.json"
     },
     "CodePipelineCFNTemplateFile":{
       "Type":"String",
       "Description":"Just the name of the CloudFormation template. Used with BaseTemplateURL.",
-      "Default":"codepipeline.json"
+      "Default":"votesup-codepipeline.json"
     },
     "CodePipelineActionsCFNTemplateFile":{
       "Type":"String",
       "Description":"Just the name of the CloudFormation template. Used with BaseTemplateURL.",
-      "Default":"cp-custom-actions.json"
+      "Default":"votesup-cp-custom-actions.json"
     },
     "ENICFNTemplateFile":{
       "Type":"String",
       "Description":"Just the name of the CloudFormation template. Used with BaseTemplateURL.",
-      "Default":"app-eni.json"
+      "Default":"votesup-app-eni.json"
     },
     "JenkinsCFNTemplateFile":{
       "Type":"String",
       "Description":"Just the name of the CloudFormation template. Used with BaseTemplateURL.",
-      "Default":"jenkins.json"
+      "Default":"votesup-jenkins-inst.json"
     },
     "PipelineStoreCFNTemplateFile":{
       "Type":"String",
       "Description":"Just the name of the CloudFormation template. Used with BaseTemplateURL.",
-      "Default":"stack-outputs.json"
+      "Default":"votesup-stack-outputs.json"
     },
     "IAMCFNTemplateFile":{
       "Type":"String",
       "Description":"Just the name of the CloudFormation template. Used with BaseTemplateURL.",
-      "Default":"iam.json"
+      "Default":"votesup-iam.json"
     },
     "DDBCFNTemplateFile":{
       "Type":"String",
       "Description":"Just the name of the CloudFormation template. Used with BaseTemplateURL.",
-      "Default":"dynamodb.json"
+      "Default":"votesup-dynamodb.json"
     },
     "DDBTableName":{
       "Type":"String",

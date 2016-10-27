@@ -55,22 +55,22 @@
     "VPCStackName":{
       "Type":"String",
       "Default":"EMPTY",
-      "Description":"A stack name reference to vpc.json"
+      "Description":"A stack name reference to votesup-vpc.json"
     },
     "IAMStackName":{
       "Type":"String",
       "Default":"EMPTY",
-      "Description":"A stack name reference to iam.json"
+      "Description":"A stack name reference to votesup-iam.json"
     },
     "DDBStackName":{
       "Type":"String",
       "Default":"EMPTY",
-      "Description":"A stack name reference to dynamodb.json"
+      "Description":"A stack name reference to votesup-dynamodb.json"
     },
     "ENIStackName":{
       "Type":"String",
       "Default":"EMPTY",
-      "Description":"A stack name reference to app-eni.json"
+      "Description":"A stack name reference to votesup-app-eni.json"
     },
     "VoteSUpAppURL":{
       "Type":"String",
@@ -162,25 +162,25 @@
       }
     },
     "VPCStackName":{
-      "Description":"A stack name reference to vpc.json",
+      "Description":"A stack name reference to votesup-vpc.json",
       "Value":{
         "Ref":"VPCStackName"
       }
     },
     "IAMStackName":{
-      "Description":"A stack name reference to iam.json",
+      "Description":"A stack name reference to votesup-iam.json",
       "Value":{
         "Ref":"IAMStackName"
       }
     },
     "DDBStackName":{
-      "Description":"A stack name reference to dynamodb.json",
+      "Description":"A stack name reference to votesup-dynamodb.json",
       "Value":{
         "Ref":"DDBStackName"
       }
     },
     "ENIStackName":{
-      "Description":"A stack name reference to app-eni.json",
+      "Description":"A stack name reference to votesup-app-eni.json",
       "Value":{
         "Ref":"ENIStackName"
       }

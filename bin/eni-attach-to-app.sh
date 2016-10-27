@@ -26,7 +26,7 @@ sec_grp_id="$(aws cloudformation describe-stacks --stack-name $app_stack --outpu
 # update ENI stack with new security-group
 aws cloudformation update-stack \
     --stack-name $votesup_eni_stack_name \
-    --template-body file://$script_dir/../pipeline/cfn/app-eni.json \
+    --template-body file://$script_dir/../pipeline/cfn/votesup-app-eni.json \
     --parameters ParameterKey=Hostname,UsePreviousValue=true \
         ParameterKey=Domain,UsePreviousValue=true \
         ParameterKey=SubnetId,UsePreviousValue=true \
