@@ -39,15 +39,15 @@ gulp.task('lint-app', function() {
         .pipe(jshint.reporter('default', { verbose: true }))
         .pipe(jshint.reporter('fail'));
 });
-gulp.task('lint-charthandler', function() {
-    return gulp.src('public/charthandler.js')
-        .pipe(jshint({ 'globals': { Chart: true, votesupChartHandler: true } }))
+gulp.task('lint-chartController', function() {
+    return gulp.src('public/chartController.js')
+        .pipe(jshint({ 'globals': { Chart: true, votesupChartController: true } }))
         .pipe(jshint.reporter('default', { verbose: true }))
         .pipe(jshint.reporter('fail'));
 });
 gulp.task('lint', function(callback) {
     runSequence(
-        ['lint-app', 'lint-charthandler'],
+        ['lint-app', 'lint-chartController'],
         callback
     );
 });
@@ -195,7 +195,7 @@ gulp.task('default', function(callback) {
 });
 
 
-gulp.task('package-site', ['lint-charthandler'], function() {
+gulp.task('package-site', ['lint-chartController'], function() {
     return gulp.src('public/**/*')
         .pipe(zip('site.zip'))
         .pipe(gulp.dest('dist'));

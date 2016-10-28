@@ -1,5 +1,6 @@
 'use strict';
 
+/*jshint -W117 */
 voteSUpChartController = function() {
     var ctx = document.getElementById('voteSUpChart').getContext('2d');
     var voteSUpDoughnutChart;
@@ -207,3 +208,4 @@ voteSUpChartController = function() {
         }
     }, 100);
 };
+/*jshint +W117 */
