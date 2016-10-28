@@ -12,4 +12,4 @@ fi
 export TARGET_URL=http://$dest_host:8080
 
 npm install
-gulp test-functional
+gulp func-test

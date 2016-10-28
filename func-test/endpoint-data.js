@@ -5,7 +5,7 @@ var targetUrl   = process.env.hasOwnProperty('TARGET_URL') ? process.env.TARGET_
 var expectedNumberOfItems = 4;
 var expectedProperties = ['value', 'color', 'highlight', 'label'];
 
-describe("/data", function() {
+describe("/voteData", function() {
   this.timeout(15000);
 
   var apiBaseurl;
@@ -26,7 +26,7 @@ describe("/data", function() {
 
   var chartData;
   beforeEach(function(done) {
-    rp({ uri: apiBaseurl+'/data', json:true})
+    rp({ uri: apiBaseurl+'/voteData', json:true})
         .then(function(data) {
           chartData = data;
             done();
@@ -60,7 +60,7 @@ describe("/data", function() {
   });
 });
 
-describe("/data?countsOnly", function() {
+describe("/voteData?voteCountsOnly", function() {
   this.timeout(15000);
 
   var apiBaseurl;
@@ -83,7 +83,7 @@ describe("/data?countsOnly", function() {
   var colorCounts;
   beforeEach(function(done) {
     var replyCount = 0;
-    rp({ uri: apiBaseurl+'/data', json:true})
+    rp({ uri: apiBaseurl+'/voteData', json:true})
         .then(function(data) {
           chartData = data;
           if(++replyCount == 2) {
@@ -94,7 +94,7 @@ describe("/data?countsOnly", function() {
           throw err;
         });
 
-    rp({ uri: apiBaseurl+'/data', qs:{countsOnly: true}, json:true})
+    rp({ uri: apiBaseurl+'/voteData', qs:{voteCountsOnly: true}, json:true})
         .then(function(data) {
           colorCounts = data;
           if(++replyCount == 2) {
@@ -109,7 +109,7 @@ describe("/data?countsOnly", function() {
   it("response has exactly " + expectedNumberOfItems + " keys", function() {
     expect(Object.keys(colorCounts)).to.have.length(expectedNumberOfItems);
   });
-  it("matches values in /data response", function() {
+  it("matches values in /voteData response", function() {
     var index;
     var color;
     var value;

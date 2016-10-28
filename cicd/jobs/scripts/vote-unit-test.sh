@@ -3,4 +3,4 @@
 set -ex
 
 npm install
-gulp test
+gulp unit-test
