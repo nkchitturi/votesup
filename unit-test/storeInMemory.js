@@ -82,11 +82,11 @@ describe("storeInMemory", function() {
             this.colorCounts = backend.getAllVoteCounts();
         });
 
-        it("has exactly " + numberOfSUTimesExpected + " votes", function() {
+        it("has exactly " + numberOfSUTimesExpected + " StandUp Times", function() {
             expect(Object.keys(this.colorCounts)).to.have.length(numberOfSUTimesExpected);
         });
 
-        it("each vote is a number", function() {
+        it("each standup time is a number", function() {
             var color;
             for (color in this.colorCounts) {
                 expect(this.colorCounts[color]).to.be.a('number');

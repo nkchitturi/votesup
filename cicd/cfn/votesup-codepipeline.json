@@ -227,7 +227,7 @@
                         ]
                     },
                     {
-                        "Name": "Continuous-Deployment-Production",
+                        "Name": "CD-Promote-To-Prod",
                         "Actions": [{
                             "InputArtifacts": [{
                                 "Name": "VoteSUpAccepted"
