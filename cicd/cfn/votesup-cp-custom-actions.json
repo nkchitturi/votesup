@@ -1,260 +1,109 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
-    "Description": "VoteSUp CodePipeline provisioning",
+    "Description": "VoteSUp CodePipeline Custom Action Provisioning",
     "Parameters": {
-        "ArtifactStoreBucket": {
-            "Type": "String",
-            "Description": "S3 bucket to use for artifacts. Just bucket Name; not URL. IAM user should have access to the bucket.",
-            "Default": "codepipeline-us-east-1-XXXXXXXXXXX"
-        },
-        "GitHubToken": {
-            "NoEcho": "true",
-            "Type": "String",
-            "Description": "Secret. It might look something like 9b189a1654643522561f7b3ebd44a1531a4287af OAuthToken with access to Repo. Go to https://github.com/settings/tokens"
-        },
-        "GitHubUser": {
-            "Type": "String",
-            "Description": "GitHub UserName",
-            "Default": "nkchitturi"
-        },
-        "Repo": {
-            "Type": "String",
-            "Description": "GitHub Repo to pull from. Only the Name. not the URL",
-            "Default": "votesup"
-        },
-        "Branch": {
-            "Type": "String",
-            "Description": "Branch to use from Repo. Only the Name. not the URL",
-            "Default": "master"
-        },
         "MyInputArtifacts": {
             "Type": "String",
             "Default": "VoteSUpSource"
         },
         "MyBuildProvider": {
-            "Type": "String",
-            "Description": "Unique identifier for Custom Action"
+            "Type": "String"
         },
         "MyJenkinsURL": {
             "Type": "String"
-        },
-        "CodePipelineServiceRole": {
-            "Type": "String",
-            "Default": "arn:aws:iam::123456789012:role/AWS-CodePipeline-Service",
-            "Description": "This IAM role must have proper permissions."
         }
     },
     "Resources": {
-        "AppPipeline": {
-            "Type": "AWS::CodePipeline::Pipeline",
+        "MyCustomBuildActionType": {
+            "Type": "AWS::CodePipeline::CustomActionType",
             "Properties": {
-                "RoleArn": {
-                    "Ref": "CodePipelineServiceRole"
+                "Category": "Build",
+                "Provider": {
+                    "Ref": "MyBuildProvider"
                 },
-                "Stages": [{
-                        "Name": "Poll-Source-Changes",
-                        "Actions": [{
-                            "InputArtifacts": [
-
-                            ],
-                            "Name": "Source",
-                            "ActionTypeId": {
-                                "Category": "Source",
-                                "Owner": "ThirdParty",
-                                "Version": "1",
-                                "Provider": "GitHub"
-                            },
-                            "OutputArtifacts": [{
-                                "Name": {
-                                    "Ref": "MyInputArtifacts"
-                                }
-                            }],
-                            "Configuration": {
-                                "Owner": {
-                                    "Ref": "GitHubUser"
+                "Version": "1",
+                "ConfigurationProperties": [{
+                    "Description": "The name of the build project must be provided when this action is added to the pipeline.",
+                    "Key": "true",
+                    "Name": "ProjectName",
+                    "Queryable": "true",
+                    "Required": "true",
+                    "Secret": "false",
+                    "Type": "String"
+                }],
+                "InputArtifactDetails": {
+                    "MaximumCount": "5",
+                    "MinimumCount": "1"
+                },
+                "OutputArtifactDetails": {
+                    "MaximumCount": "5",
+                    "MinimumCount": "0"
+                },
+                "Settings": {
+                    "EntityUrlTemplate": {
+                        "Fn::Join": [
+                            "", [{
+                                    "Ref": "MyJenkinsURL"
                                 },
-                                "Repo": {
-                                    "Ref": "Repo"
-                                },
-                                "Branch": {
-                                    "Ref": "Branch"
-                                },
-                                "OAuthToken": {
-                                    "Ref": "GitHubToken"
-                                }
-                            },
-                            "RunOrder": 1
-                        }]
-                    },
-                    {
-                        "Name": "Continuous-Build-Testing",
-                        "Actions": [{
-                                "InputArtifacts": [{
-                                    "Name": {
-                                        "Ref": "MyInputArtifacts"
-                                    }
-                                }],
-                                "Name": "Build",
-                                "ActionTypeId": {
-                                    "Category": "Build",
-                                    "Owner": "Custom",
-                                    "Version": "1",
-                                    "Provider": {
-                                        "Ref": "MyBuildProvider"
-                                    }
-                                },
-                                "OutputArtifacts": [{
-                                    "Name": "VoteSUpBuild"
-                                }],
-                                "Configuration": {
-                                    "ProjectName": "vote-build"
-                                },
-                                "RunOrder": 1
-                            },
-                            {
-                                "InputArtifacts": [{
-                                    "Name": {
-                                        "Ref": "MyInputArtifacts"
-                                    }
-                                }],
-                                "Name": "Test-Unit",
-                                "ActionTypeId": {
-                                    "Category": "Test",
-                                    "Owner": "Custom",
-                                    "Version": "1",
-                                    "Provider": {
-                                        "Ref": "MyBuildProvider"
-                                    }
-                                },
-                                "OutputArtifacts": [
-
-                                ],
-                                "Configuration": {
-                                    "ProjectName": "vote-unit-test"
-                                },
-                                "RunOrder": 1
-                            },
-                            {
-                                "InputArtifacts": [{
-                                    "Name": {
-                                        "Ref": "MyInputArtifacts"
-                                    }
-                                }],
-                                "Name": "Code-Analysis",
-                                "ActionTypeId": {
-                                    "Category": "Test",
-                                    "Owner": "Custom",
-                                    "Version": "1",
-                                    "Provider": {
-                                        "Ref": "MyBuildProvider"
-                                    }
-                                },
-                                "OutputArtifacts": [
-
-                                ],
-                                "Configuration": {
-                                    "ProjectName": "vote-staticcode-anal"
-                                },
-                                "RunOrder": 1
-                            }
+                                "job/{Config:ProjectName}"
+                            ]
                         ]
                     },
-                    {
-                        "Name": "Provision-Env-Test",
-                        "Actions": [{
-                                "InputArtifacts": [{
-                                    "Name": "VoteSUpBuild"
-                                }],
-                                "Name": "Provision-New-Environment",
-                                "ActionTypeId": {
-                                    "Category": "Test",
-                                    "Owner": "Custom",
-                                    "Version": "1",
-                                    "Provider": {
-                                        "Ref": "MyBuildProvider"
-                                    }
+                    "ExecutionUrlTemplate": {
+                        "Fn::Join": [
+                            "", [{
+                                    "Ref": "MyJenkinsURL"
                                 },
-                                "OutputArtifacts": [{
-                                    "Name": "VoteSUpCreate"
-                                }],
-                                "Configuration": {
-                                    "ProjectName": "vote-create-env"
-                                },
-                                "RunOrder": 1
-                            },
-                            {
-                                "InputArtifacts": [{
-                                    "Name": "VoteSUpCreate"
-                                }],
-                                "Name": "Test-Acceptance",
-                                "ActionTypeId": {
-                                    "Category": "Test",
-                                    "Owner": "Custom",
-                                    "Version": "1",
-                                    "Provider": {
-                                        "Ref": "MyBuildProvider"
-                                    }
-                                },
-                                "OutputArtifacts": [{
-                                    "Name": "VoteSUpAccepted"
-                                }],
-                                "Configuration": {
-                                    "ProjectName": "vote-acceptance-test"
-                                },
-                                "RunOrder": 2
-                            },
-                            {
-                                "InputArtifacts": [{
-                                    "Name": "VoteSUpCreate"
-                                }],
-                                "Name": "Test-Infrastructure",
-                                "ActionTypeId": {
-                                    "Category": "Test",
-                                    "Owner": "Custom",
-                                    "Version": "1",
-                                    "Provider": {
-                                        "Ref": "MyBuildProvider"
-                                    }
-                                },
-                                "OutputArtifacts": [{
-                                    "Name": "VoteSUpInfra"
-                                }],
-                                "Configuration": {
-                                    "ProjectName": "vote-infra-test"
-                                },
-                                "RunOrder": 2
-                            }
+                                "job/{Config:ProjectName}/{ExternalExecutionId}"
+                            ]
                         ]
-                    },
-                    {
-                        "Name": "Continuous-Deployment-Production",
-                        "Actions": [{
-                            "InputArtifacts": [{
-                                "Name": "VoteSUpAccepted"
-                            }],
-                            "Name": "Promote-Test-to-Prod-Env",
-                            "ActionTypeId": {
-                                "Category": "Test",
-                                "Owner": "Custom",
-                                "Version": "1",
-                                "Provider": {
-                                    "Ref": "MyBuildProvider"
-                                }
-                            },
-                            "OutputArtifacts": [
-
-                            ],
-                            "Configuration": {
-                                "ProjectName": "vote-promote-env"
-                            },
-                            "RunOrder": 1
-                        }]
                     }
-                ],
-                "ArtifactStore": {
-                    "Type": "S3",
-                    "Location": {
-                        "Ref": "ArtifactStoreBucket"
+                }
+            }
+        },
+        "MyCustomTestActionType": {
+            "Type": "AWS::CodePipeline::CustomActionType",
+            "Properties": {
+                "Category": "Test",
+                "Provider": {
+                    "Ref": "MyBuildProvider"
+                },
+                "Version": "1",
+                "ConfigurationProperties": [{
+                    "Description": "The name of the build project must be provided when this action is added to the pipeline.",
+                    "Key": "true",
+                    "Name": "ProjectName",
+                    "Queryable": "true",
+                    "Required": "true",
+                    "Secret": "false",
+                    "Type": "String"
+                }],
+                "InputArtifactDetails": {
+                    "MaximumCount": "5",
+                    "MinimumCount": "1"
+                },
+                "OutputArtifactDetails": {
+                    "MaximumCount": "5",
+                    "MinimumCount": "0"
+                },
+                "Settings": {
+                    "EntityUrlTemplate": {
+                        "Fn::Join": [
+                            "", [{
+                                    "Ref": "MyJenkinsURL"
+                                },
+                                "job/{Config:ProjectName}"
+                            ]
+                        ]
+                    },
+                    "ExecutionUrlTemplate": {
+                        "Fn::Join": [
+                            "", [{
+                                    "Ref": "MyJenkinsURL"
+                                },
+                                "job/{Config:ProjectName}/{ExternalExecutionId}"
+                            ]
+                        ]
                     }
                 }
             }
@@ -266,20 +115,16 @@
                 "Ref": "AWS::StackName"
             }
         },
-        "CodePipelineURL": {
+        "CustomActionBuildName": {
+            "Description": "CodePipeline Build Custom action name",
             "Value": {
-                "Fn::Join": [
-                    "", [
-                        "https://console.aws.amazon.com/codecicd/home?region=",
-                        {
-                            "Ref": "AWS::Region"
-                        },
-                        "#/view/",
-                        {
-                            "Ref": "AppPipeline"
-                        }
-                    ]
-                ]
+                "Ref": "MyCustomBuildActionType"
+            }
+        },
+        "CustomActionTestName": {
+            "Description": "CodePipeline Test Custom action name",
+            "Value": {
+                "Ref": "MyCustomTestActionType"
             }
         }
     }
