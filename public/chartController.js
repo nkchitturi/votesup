@@ -142,7 +142,7 @@ voteSUpChartController = function() {
                     this.showTooltip(this.segments, true);
                 },
                 // tooltipTemplate: '<%= label %> - <%= value %>'
-                tooltipTemplate: "<%= label %>"
+                tooltipTemplate: '<%= label %>'
             };
 
             voteSUpDoughnutChart = new Chart(ctx).Doughnut(data, optionsDoughnut);
