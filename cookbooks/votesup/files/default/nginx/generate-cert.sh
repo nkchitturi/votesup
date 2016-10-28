@@ -22,11 +22,11 @@ export PASSPHRASE=$(head -c 500 /dev/urandom | tr -dc a-z0-9A-Z | head -c 128; e
 # Certificate details; replace items in angle brackets with your own info
 subj="
 C=US
-ST=VA
+ST=TX
 O=SungardAS
-localityName=Reston
+localityName=Dallas
 commonName=$DOMAIN
-organizationalUnitName=Funny Hats
+organizationalUnitName=LabsRUs
 emailAddress=abc@comp.com
 "
 
