@@ -20,7 +20,10 @@ describe port(443) do
   it { should be_listening }
 end
 
+# HTTP only
 describe command('curl -s http://localhost') do
+
+# enable SSL/HTTPS
 # describe command('curl --insecure -s https://localhost') do
   its(:stdout) { should match /VoteSUp/ }
 end
