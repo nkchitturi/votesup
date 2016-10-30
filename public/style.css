@@ -25,33 +25,16 @@
 }
 .carousel-caption h1{
   font-size: 5.4em;
-  font-family: "futura-pt", cursive;
+  font-family: "futura-pt";
   padding-bottom: .4em;
 }
 .carousel-caption p{
   font-size: 3em;
 }
-/*
-.company-logo {
-  top: 20px;
-  right: 20px;
-    height: 100px;
-  width: 210px;
-}*/
 
 html {
   font-family: "futura-pt",sans-serif;
 }
-
-/*body{
-margin-top: 40px;
-font-family: "futura-pt",sans-serif;
-}*/
-
-/*.logo {
-  margin-bottom:40px;
-  margin-top: 60px;
-}*/
 
 p {
   font-size:36px;
@@ -100,9 +83,9 @@ list-style {
   overflow:hidden;
 }
 
-/*.totnum {
-  /* font-size: 45px;
-}*/
+.totnum {
+  font-size: 45px;
+}
 
 .padtop {
   padding-top: 60px;
