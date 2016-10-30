@@ -1,7 +1,7 @@
 var expect = require("chai").expect;
 var InMemStor = require("../lib/storeInMemory.js");
 
-var numberOfSUTimesExpected = 4;
+var numberOfSUTimesExpected = 3;
 var expectedSUTimeProperties = ['value', 'color', 'highlight', 'label'];
 var backend = new InMemStor();
 
