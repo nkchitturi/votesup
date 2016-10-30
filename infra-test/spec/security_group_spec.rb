@@ -22,7 +22,7 @@ describe('votesup_security_group') do
     cidr = twentytwo.first.ip_ranges.first.cidr_ip
     
     # Don't allow All traffic for SSH access
-    # expect(cidr).not_to eq "0.0.0.0/0"
+    expect(cidr).not_to eq "0.0.0.0/0"
 
   end 
 end
