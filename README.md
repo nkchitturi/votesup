@@ -6,11 +6,9 @@ VoteSUp is a demo App used @CloudExpo for showcasing a DevOps workflow to achiev
 
 You can do a code push and see it deployed into production (after going through various stages in the workflow)
 
-The Arch Diagram is below and the accompanying talk @CloudExpo (TBD)
+The Arch Diagram and the accompanying talk @CloudExpo (TBD)
 
 TBD - Arch Diagram
-
-[![Launch CFN stack](https://s3.amazonaws.com/votesup-demosungardas/public/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#cstack=sn%7En6%7Cturl%7Ehttps://s3.amazonaws.com/votesup-demosungardas/cloudformation/votesup-launcher.json)
 
 # About the App
 
